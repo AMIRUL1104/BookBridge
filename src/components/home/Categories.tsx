@@ -1,0 +1,100 @@
+// src/components/home/Categories.tsx
+"use client";
+
+import { Atom, Wrench, Stethoscope, Briefcase, Palette, GraduationCap } from "lucide-react";
+import { motion } from "framer-motion";
+import SectionHeading from "../shared/SectionHeading";
+import Link from "next/link";
+
+export default function Categories() {
+  const categories = [
+    { name: "Science", icon: Atom, count: "140+ Books" },
+    { name: "Engineering", icon: Wrench, count: "90+ Books" },
+    { name: "Medical", icon: Stethoscope, count: "75+ Books" },
+    { name: "Business", icon: Briefcase, count: "110+ Books" },
+    { name: "Arts", icon: Palette, count: "45+ Books" },
+    { name: "Admission", icon: GraduationCap, count: "210+ Books" },
+  ];
+
+  // প্যারেন্ট গ্রিডের জন্য Staggered ডিলিং (যাতে কার্ডগুলো সিরিয়ালি আসে)
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1, // ০.১ সেকেন্ড পরপর এক একটা কার্ড অ্যানিমেট হবে
+      },
+    },
+  };
+
+  // প্রতিটি সিঙ্গেল ক্যাটাগরি কার্ডের জন্য Scale & Fade অ্যানিমেশন
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.9, y: 15 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.16, 1, 0.3, 1] as const, // টাইপসেফ Cubic Bezier কার্ভ
+      },
+    },
+  };
+
+  return (
+    <section className="py-16 lg:py-24 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <SectionHeading 
+          title="Popular Categories" 
+          subtitle="Find exactly what you need by browsing through academic disciplines." 
+        />
+
+        {/* Framer Motion Wrapper Container */}
+        <motion.div 
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+        >
+          {categories.map((cat, idx) => {
+            const Icon = cat.icon;
+            return (
+              <Link
+                key={idx}
+                href={`/books?category=${cat.name.toLowerCase()}`}
+                className="block focus-visible:outline-2 focus-visible:outline-[#35858E] rounded-2xl"
+              >
+                <motion.div
+                  variants={itemVariants}
+                  whileHover={{ 
+                    scale: 1.03,
+                    y: -4,
+                    transition: { duration: 0.2 } 
+                  }}
+                  whileTap={{ scale: 0.98 }} // মোবাইলে বা ক্লিকে হালকা ডাববে (Premium Feedback)
+                  className="border border-[#DDE5E7] hover:border-[#35858E] p-6 rounded-2xl flex flex-col items-center text-center gap-3 transition-colors duration-300 hover:shadow-xs group h-full cursor-pointer bg-white"
+                >
+                  {/* আইকন বক্স */}
+                  <div className="w-12 h-12 rounded-xl bg-gray-50 group-hover:bg-[#35858E]/10 text-gray-600 group-hover:text-[#35858E] flex items-center justify-center transition-colors duration-300">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  
+                  {/* টাইটেল */}
+                  <h3 className="font-bold text-sm text-gray-800 group-hover:text-[#35858E] transition-colors duration-300">
+                    {cat.name}
+                  </h3>
+                  
+                  {/* বুক কাউন্ট ব্যাজ */}
+                  <span className="text-xs text-gray-400 group-hover:text-gray-500 transition-colors">
+                    {cat.count}
+                  </span>
+                </motion.div>
+              </Link>
+            );
+          })}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
