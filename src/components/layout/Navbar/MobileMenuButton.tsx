@@ -12,7 +12,8 @@ export default function MobileMenuButton({ isOpen, onClick }: MobileMenuButtonPr
   return (
     <button
       onClick={onClick}
-      className="p-2 text-gray-600 hover:text-[#35858E] focus:outline focus:outline-2 focus:outline-[#35858E] rounded-md md:hidden block transition-colors"
+      // আইকন কালার হোয়াইট (text-white) এ কনভার্ট করা হয়েছে
+      className="p-2 text-white hover:text-[#FCDE70] focus:outline focus:outline-2 focus:outline-[#FCDE70] rounded-md md:hidden block transition-colors"
       aria-label={isOpen ? "Close main menu" : "Open main menu"}
       aria-expanded={isOpen}
     >
