@@ -9,7 +9,7 @@ import HowItWorks from "./HowItWorks";
 
 
 export default function HomePage() {
-  console.log("[HomePage] Parent Server Component Rendered Successfully.");
+  // console.log("[HomePage] Parent Server Component Rendered Successfully.");
   
   return (
     <main className="min-h-screen bg-[#F5F7F8]">

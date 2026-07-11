@@ -43,7 +43,7 @@ next-env.d.ts
 imagebb.ts
 
 server.ts
-serverFetch.ts
+# serverFetch.ts
 
 action.ts
-api.ts
+# api.ts

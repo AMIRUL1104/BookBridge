@@ -13,7 +13,7 @@ import {
 import SectionHeading from "../shared/SectionHeading";
 
 export default function FAQ() {
-  console.log("[FAQ] Client Component Hydrated with Sub-component Pattern");
+  // console.log("[FAQ] Client Component Hydrated with Sub-component Pattern");
 
   // তোমার দেওয়া প্যাটার্ন অনুযায়ী আইকন, টাইটেল এবং কন্টেন্ট ম্যাপিং
   const items = [
