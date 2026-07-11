@@ -9,6 +9,8 @@ import BookMetaCard from "@/components/book-details/BookMetaCard";
 import BookHero from "@/components/book-details/BookHero";
 import { getPostById } from "@/services/server/api";
 
+
+// let bookName ;
 export const metadata: Metadata = {
   title: "Post Details | BookBridge",
   description: "View books bundle shared by students.",
@@ -27,6 +29,8 @@ export interface BackendBookItem {
 
 export interface PostDetailData {
   _id: string;
+  title: string;
+  category: string;
   sellerId: string;
   type: "sell" | "donate";
   image: string;
@@ -106,6 +110,7 @@ export default async function BookDetailsPage({ params }: { params: Params }) {
   // console.log("Fetched post data:", data);
   const postData : PostDetailData = data;
   // console.log("Fetched post data:", postData);
+  // bookName = postData?.title || "Books Bundle";
   return (
     <main className="min-h-screen w-full bg-[#F5F7F8] py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex flex-col gap-6">

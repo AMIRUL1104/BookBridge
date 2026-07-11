@@ -12,20 +12,30 @@ export const authHeader = async () => {
   return header;
 };
 
-export async function serverFetch(path :string) {
+export async function serverFetch<T>(
+  path: string,
+  options?: RequestInit,
+): Promise<T | null> {
   try {
-    const res = await fetch(`${baseUrl}${path}`);
+    const res = await fetch(`${baseUrl}${path}`, {
+      ...options,
+      headers: {
+        "Content-Type": "application/json",
+        ...(options?.headers ?? {}),
+      },
+      cache: "no-store",
+    });
 
-    // রেসপন্স ঠিক না থাকলে এরর থ্রো করবে
     if (!res.ok) {
       const errorText = await res.text();
+
       throw new Error(`Server returned ${res.status}: ${errorText}`);
     }
 
-    return await res.json();
+    return (await res.json()) as T;
   } catch (error) {
     console.error("Fetch error:", error);
-    return null; // বা আপনার প্রয়োজন মতো এরর অবজেক্ট রিটার্ন করতে পারেন
+    return null;
   }
 }
 

@@ -27,7 +27,7 @@ export default function BookInformation({ post }: BookInfoProps) {
       </div>
 
       <h1 className="text-2xl font-black text-gray-900 tracking-tight">
-        Academic Books Set for Sale
+        {post.title || "Academic Books "}
       </h1>
 
       <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-xs sm:text-sm text-gray-500 border-b border-[#DDE5E7] pb-4">

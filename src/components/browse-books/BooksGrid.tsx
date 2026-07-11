@@ -1,36 +1,56 @@
 // src/components/browse-books/BooksGrid.tsx
-import BookCard, { BookItem } from "@/components/shared/BookCard";
+import BookCard from "@/components/shared/BookCard";
+import { BookItem } from "@/interface/postDetails";
 import { getPosts } from "@/services/server/api";
 
-export default async function BooksGrid() {
-  // ২০টি একাডেমিক বইয়ের জেনারেটেড প্রফেশনাল মক ডাটা
-  // const mockBooks: BookItem[] = Array.from({ length: 20 }).map((_, idx) => {
-  //   const categories = ["Science", "Engineering", "Medical", "Business", "Admission"];
-  //   const conditions = ["Like New", "Good", "Fair"];
-  //   const types: ("Sell" | "Donate")[] = ["Sell", "Donate"];
-    
-  //   const id = (idx + 1).toString();
-  //   const category = categories[idx % categories.length];
-  //   const condition = conditions[idx % conditions.length];
-  //   const type = types[idx % types.length];
+interface BooksGridProps {
+  searchParams: Promise<{
+    search?: string;
+    category?: string;
+    condition?: string;
+    listingType?: "sell" | "donate" | "";
+    page?: string;
+  }>;
+}
 
-  //   return {
-  //     id,
-  //     name: `Academic Textbook Vol ${id} - ${category} Edition`,
-  //     category,
-  //     location: idx % 2 === 0 ? "Farmgate, Dhaka" : "Chittagong Sadar, CTG",
-  //     condition,
-  //     type,
-  //     price: type === "Sell" ? (150 + (idx * 20)).toString() : undefined,
-  //     imageUrl: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=400",
-  //   };
-  // });
+export default async function BooksGrid({ searchParams }: BooksGridProps) {
+  // ১. searchParams resolve করা হচ্ছে
+  const resolvedParams = (await searchParams) || {};
 
+  // ২. এপিআই রিকোয়েস্টের জন্য প্যারামিটার প্রিপেয়ার
+  const apiParams = {
+    search: resolvedParams.search || "",
+    category: resolvedParams.category || "",
+    condition: resolvedParams.condition || "",
+    listingType: (resolvedParams.listingType || "") as "sell" | "donate" | "", 
+    page: Number(resolvedParams.page) || 1,
+    limit: 8,
+  };
+  
+  // ৩. জেনেরিক টাইপ <BookItem> পাস করে ডাটা ফেচ
+  const postData = await getPosts<BookItem>(apiParams);
 
-  const postData = await getPosts();
-  const bookItems: BookItem[] = postData.data;
+  // এপিআই ফেইল করলে এরর মেসেজ
+  if (!postData.success) {
+    return (
+      <div className="text-center text-red-500 py-10 font-medium">
+        Failed to load books. Please try again later.
+      </div>
+    );
+  }
+
+  const bookItems: BookItem[] = postData.books;
+
+  // যদি সার্চ বা ফিল্টারিং এ কোনো বই না পাওয়া যায়
+  if (bookItems.length === 0) {
+    return (
+      <div className="text-center text-gray-500 py-16 text-lg bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+        No books found matching your criteria.
+      </div>
+    );
+  }
+
   return (
-    // রেসপন্সিভ গ্রিড ব্রেকপয়েন্ট রুলস: মোবাইল ২, ট্যাব ৩, লার্জ ডেক্সটপ ৪
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
       {bookItems.map((book) => (
         <BookCard key={book._id} book={book} />

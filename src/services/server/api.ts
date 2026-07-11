@@ -1,7 +1,73 @@
-// // ========== all companies for admin =====================
-
+import { BookItem } from "@/interface/postDetails";
 import { serverFetch } from "../core/serverFetch";
 
+interface GetPostsParams {
+  search?: string;
+  category?: string;
+  condition?: string;
+  listingType?: "sell" | "donate" | "";
+  sort?: "newest" | "oldest" | "title-asc" | "title-desc";
+  page?: number;
+  limit?: number;
+}
+
+interface BooksResponse<T> {
+  success: boolean;
+  books: T[];
+  total: number;
+  totalPages: number;
+  currentPage: number;
+}
+
+export const getPosts = async <T>({
+  search = "",
+  category = "",
+  condition = "",
+  listingType = "",
+  sort = "newest",
+  page = 1,
+  limit = 6,
+}: GetPostsParams = {}): Promise<BooksResponse<T>> => {
+  const params = new URLSearchParams();
+
+  if (search) params.set("search", search);
+  if (category) params.set("category", category);
+  if (condition) params.set("condition", condition);
+  if (listingType) params.set("listingType", listingType);
+  if (sort) params.set("sort", sort);
+
+  params.set("page", String(page));
+  params.set("limit", String(limit));
+
+  const result = await serverFetch<BooksResponse<T>>(
+    `/api/posts?${params.toString()}`,
+  );
+
+  // serverFetch returns null on failure
+  if (!result) {
+    return {
+      success: false,
+      books: [],
+      total: 0,
+      totalPages: 1,
+      currentPage: page,
+    };
+  }
+
+  return result;
+};
+
+export interface PostResponse {
+  success: boolean;
+  data: BookItem;
+}
+export const getPostById = async (id: string): Promise<PostResponse | null> => {
+  return serverFetch<PostResponse>(`/api/posts/${id}`);
+};
+
+// export const getDoctorStats = async (doctorId) => {
+//   return protectedFetch(`/api/stats/doctor?id=${doctorId}`);
+// };
 // import { protectedFetch, serverFetch } from "../core/serverFetch";
 
 // //========================= get patients by id =====================
@@ -40,14 +106,6 @@ import { serverFetch } from "../core/serverFetch";
 // };
 
 // // ====================== get stats =====================
-export const getPosts = async () => {
-  return serverFetch(`/api/posts`);
-};
-
-export const getPostById = async (id: string) => {
-  return serverFetch(`/api/posts/${id}`);
-};
-
-// export const getDoctorStats = async (doctorId) => {
-//   return protectedFetch(`/api/stats/doctor?id=${doctorId}`);
+// export const getPosts = async () => {
+//   return serverFetch(`/api/posts`);
 // };
