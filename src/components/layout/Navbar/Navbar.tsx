@@ -10,8 +10,8 @@ export default function Navbar() {
   console.log(`[Navbar] Dark Theme Render - Logged In: ${isLoggedIn}, Role: ${role}`);
 
   return (
-    // ব্যাকগ্রাউন্ড পরিবর্তন করে #2B5748 এবং বর্ডার rgba(255,255,255,0.1) করা হলো
-    <header className="sticky top-0 z-50 w-full bg-[#2B5748] border-b border-white/10 shadow-md">
+    // ব্যাকগ্রাউন্ড পরিবর্তন করে #35858E এবং বর্ডার rgba(255,255,255,0.1) করা হলো
+    <header className="sticky top-0 z-50 w-full bg-[#35858E] border-b border-white/10 shadow-md">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
         
         {/* লোগো (লেফট সাইড) */}

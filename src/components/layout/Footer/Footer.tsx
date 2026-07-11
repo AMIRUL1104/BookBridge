@@ -22,7 +22,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#2B5748] border-t border-white/10 w-full font-sans">
+    <footer className="bg-[#35858E] border-t border-white/10 w-full font-sans">
       {/* টপ সেকশন: ফোর-কলাম গ্রিড লেআউট */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
@@ -49,7 +49,7 @@ export default function Footer() {
             &copy; 2026 BookBridge. Built for educational purposes.
           </p>
           <p className="text-center sm:text-right font-medium">
-            Made with <span className="text-[#FCDE70]">Next.js 16</span> &amp; <span className="text-[#7DA78C]">TypeScript</span>
+            Made with <span className="text-[#F6CE71]">Next.js 16</span> &amp; <span className="text-[#7DA78C]">TypeScript</span>
           </p>
         </div>
       </div>

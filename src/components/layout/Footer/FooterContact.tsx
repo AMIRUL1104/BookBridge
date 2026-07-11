@@ -12,14 +12,14 @@ export default function FooterContact() {
       {/* লোকেশন ও ইমেইল */}
       <ul className="flex flex-col gap-3 text-[#C2D099] text-sm">
         <li className="flex items-center gap-2.5">
-          <MapPin className="w-4 h-4 text-[#FCDE70] shrink-0" />
+          <MapPin className="w-4 h-4 text-[#F6CE71] shrink-0" />
           <span>Bangladesh</span>
         </li>
         <li className="flex items-center gap-2.5">
-          <Mail className="w-4 h-4 text-[#FCDE70] shrink-0" />
+          <Mail className="w-4 h-4 text-[#F6CE71] shrink-0" />
           <a 
             href="mailto:info@bookbridge.com" 
-            className="hover:text-[#FCDE70] transition-colors focus-visible:outline-2 focus-visible:outline-[#35858E] rounded"
+            className="hover:text-[#F6CE71] transition-colors focus-visible:outline-2 focus-visible:outline-[#35858E] rounded"
           >
             info@bookbridge.com
           </a>
@@ -34,7 +34,7 @@ export default function FooterContact() {
           href="https://facebook.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-[#C2D099] hover:text-[#FCDE70] transition-all focus-visible:outline-2 focus-visible:outline-[#35858E]"
+          className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-[#C2D099] hover:text-[#F6CE71] transition-all focus-visible:outline-2 focus-visible:outline-[#35858E]"
           aria-label="BookBridge Facebook"
         >
           <svg
@@ -53,7 +53,7 @@ export default function FooterContact() {
           href="https://linkedin.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-[#C2D099] hover:text-[#FCDE70] transition-all focus-visible:outline-2 focus-visible:outline-[#35858E]"
+          className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-[#C2D099] hover:text-[#F6CE71] transition-all focus-visible:outline-2 focus-visible:outline-[#35858E]"
           aria-label="BookBridge LinkedIn"
         >
           <svg

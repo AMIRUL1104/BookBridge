@@ -87,14 +87,14 @@ export default function Hero() {
           >
             <Link
               href="/books"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-base font-semibold text-white bg-[#35858E] hover:bg-[#35858E]/90 px-6 py-3 rounded-xl transition-all shadow-md focus-visible:outline-2 focus-visible:outline-[#FCDE70]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-base font-semibold text-white bg-[#35858E] hover:bg-[#35858E]/90 px-6 py-3 rounded-xl transition-all shadow-md focus-visible:outline-2 focus-visible:outline-[#F6CE71]"
             >
               <span>Browse Books</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               href="/books/add"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-base font-semibold text-[#35858E] bg-white border border-[#35858E]/20 hover:bg-gray-50 px-6 py-3 rounded-xl transition-all shadow-xs focus-visible:outline-2 focus-visible:outline-[#FCDE70]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-base font-semibold text-[#35858E] bg-white border border-[#35858E]/20 hover:bg-gray-50 px-6 py-3 rounded-xl transition-all shadow-xs focus-visible:outline-2 focus-visible:outline-[#F6CE71]"
             >
               <PlusCircle className="w-5 h-5" />
               <span>Post a Book</span>
@@ -127,7 +127,7 @@ export default function Hero() {
               <p className="text-sm text-gray-500 max-w-xs">Connecting Buyers, Sellers, and Donors within the Student Community.</p>
             </div>
             {/* ডেকোরেティブ ব্যাকগ্রাউন্ড সার্কেল */}
-            <div className="absolute -bottom-6 -left-6 w-24 h-24 rounded-full bg-[#FCDE70]/40 blur-xl" />
+            <div className="absolute -bottom-6 -left-6 w-24 h-24 rounded-full bg-[#F6CE71]/40 blur-xl" />
           </motion.div>
         </motion.div>
 

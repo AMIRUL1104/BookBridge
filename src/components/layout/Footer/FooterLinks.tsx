@@ -22,7 +22,7 @@ export default function FooterLinks({ title, links }: FooterLinksProps) {
           <li key={idx}>
             <Link
               href={link.href}
-              className="text-[#C2D099] text-sm hover:text-[#FCDE70] focus-visible:text-[#FCDE70] focus-visible:outline-2 focus-visible:outline-[#35858E] rounded transition-colors duration-200"
+              className="text-[#C2D099] text-sm hover:text-[#F6CE71] focus-visible:text-[#F6CE71] focus-visible:outline-2 focus-visible:outline-[#35858E] rounded transition-colors duration-200"
             >
               {link.label}
             </Link>

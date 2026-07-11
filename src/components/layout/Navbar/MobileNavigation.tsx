@@ -27,8 +27,8 @@ export default function MobileNavigation({ isLoggedIn, role }: MobileNavigationP
             className="fixed inset-0 bg-black/50 z-40 backdrop-blur-xs transition-opacity"
             onClick={() => setIsOpen(false)}
           />
-          {/* ড্রয়ার ব্যাকগ্রাউন্ড পরিবর্তন করে #2B5748 এবং বর্ডার অ্যাড করা হলো */}
-          <div className="fixed inset-y-0 right-0 w-full max-w-[280px] bg-[#2B5748] border-l border-white/10 z-50 p-6 shadow-2xl flex flex-col gap-6 animate-in slide-in-from-right duration-200">
+          {/* ড্রয়ার ব্যাকগ্রাউন্ড পরিবর্তন করে #35858E এবং বর্ডার অ্যাড করা হলো */}
+          <div className="fixed inset-y-0 right-0 w-full max-w-[280px] bg-[#35858E] border-l border-white/10 z-50 p-6 shadow-2xl flex flex-col gap-6 animate-in slide-in-from-right duration-200">
             <div className="flex items-center justify-end">
               <MobileMenuButton isOpen={isOpen} onClick={() => setIsOpen(false)} />
             </div>

@@ -71,7 +71,7 @@ export default function BookCard({ book }: BookCardProps) {
           </div>
           <Link
             href={`/books/${book.id}`}
-            className="text-[11px] font-bold text-white bg-[#35858E] hover:bg-[#35858E]/90 px-3 py-1.5 rounded-lg transition-all focus-visible:outline-2 focus-visible:outline-[#FCDE70]"
+            className="text-[11px] font-bold text-white bg-[#35858E] hover:bg-[#35858E]/90 px-3 py-1.5 rounded-lg transition-all focus-visible:outline-2 focus-visible:outline-[#F6CE71]"
           >
             Details
           </Link>
