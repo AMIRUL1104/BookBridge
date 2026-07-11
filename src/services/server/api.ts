@@ -44,6 +44,10 @@ export const getPosts = async () => {
   return serverFetch(`/api/posts`);
 };
 
+export const getPostById = async (id: string) => {
+  return serverFetch(`/api/posts/${id}`);
+};
+
 // export const getDoctorStats = async (doctorId) => {
 //   return protectedFetch(`/api/stats/doctor?id=${doctorId}`);
 // };

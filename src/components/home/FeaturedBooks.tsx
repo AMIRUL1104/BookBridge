@@ -67,7 +67,7 @@ export default async function FeaturedBooks() {
   // ];
 
   const postData = await getPosts();
-  console.log("Fetched posts data:", postData);
+  // console.log("Fetched posts data:", postData);
   const featuredBooks: BookItem[] = postData?.data || []; 
 
   return (
