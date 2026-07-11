@@ -27,12 +27,10 @@ export default function NavigationLinks({ isLoggedIn, role, onLinkClick }: Navig
       { name: "Home", href: "/", icon: Home },
       { name: "Browse Books", href: "/books", icon: BookOpen },
       { name: "Add Book", href: "/books/add", icon: PlusCircle },
-      { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard }
+      { name: "Dashboard", href: `/dashboard/${role}`, icon: LayoutDashboard }
     );
 
-    if (role === "admin") {
-      links.push({ name: "Admin Dashboard", href: "/admin/dashboard", icon: ShieldCheck });
-    }
+   
   }
 
   return (

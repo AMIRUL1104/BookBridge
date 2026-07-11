@@ -16,7 +16,7 @@ export default function DesktopNavigation({ isLoggedIn, role }: DesktopNavigatio
       </nav>
 
       <div className="hidden md:flex items-center gap-4">
-        {isLoggedIn ? <UserMenu /> : <AuthButtons />}
+        {isLoggedIn ? <UserMenu role={role} /> : <AuthButtons />}
       </div>
     </>
   );

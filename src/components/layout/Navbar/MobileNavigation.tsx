@@ -12,12 +12,13 @@ interface MobileNavigationProps {
   role: "user" | "admin" | null;
 }
 
+
 export default function MobileNavigation({ isLoggedIn, role }: MobileNavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="md:hidden flex items-center gap-4">
-      {isLoggedIn && <UserMenu />}
+      {isLoggedIn && <UserMenu role={role} />}
       
       <MobileMenuButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
 

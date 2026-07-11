@@ -3,10 +3,16 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client"
+import { useRouter } from "next/navigation";
 
-export default function UserMenu() {
+interface UserMenuProps {
+  role: "user" | "admin" | null;
+}
+export default function UserMenu({role}: UserMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   // বাইরে ক্লিক করলে ড্রপডাউন বন্ধ করার লজিক
   useEffect(() => {
@@ -23,6 +29,19 @@ export default function UserMenu() {
     console.log(`[UserMenu] Temporary Triggered: ${actionName}`);
   };
 
+  const  handleSignout = async () => {
+ 
+
+await authClient.signOut({
+  fetchOptions: {
+    onSuccess: () => {
+      router.push("/auth/signin"); // redirect to login page
+       router.refresh(); // রিডাইরেক্টের পর  নতুন সেশন ডেটা লোড করার জন্য
+    },
+  },
+});
+  }
+
   return (
     <div className="relative" ref={dropdownRef}>
       <button
@@ -38,7 +57,7 @@ export default function UserMenu() {
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 origin-top-right rounded-xl bg-white border border-[#DDE5E7] shadow-xl py-1 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
           <Link
-            href="/dashboard"
+            href={`/dashboard/${role}`}
             onClick={() => setIsOpen(false)}
             className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-[#F5F7F8] hover:text-[#35858E] transition-colors"
           >
@@ -52,14 +71,14 @@ export default function UserMenu() {
             }}
             className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-[#F5F7F8] hover:text-[#35858E] transition-colors"
           >
-            Profile (placeholder)
+            Profile 
           </Link>
           <hr className="border-[#DDE5E7] my-1" />
           <button
-            onClick={() => handlePlaceholderAction("Logout Process")}
+            onClick={handleSignout}
             className="block w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors"
           >
-            Logout (placeholder)
+            Logout 
           </button>
         </div>
       )}

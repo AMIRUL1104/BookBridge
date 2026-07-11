@@ -2,13 +2,16 @@
 import Logo from "./Logo";
 import DesktopNavigation from "./DesktopNavigation";
 import MobileNavigation from "./MobileNavigation";
+import { getUserSession } from "@/services/core/session";
 
-export default function Navbar() {
-  const isLoggedIn = true; 
-  const role: "user" | "admin" = "admin"; 
+export default async function Navbar() {
+  const user = await getUserSession();
+  const isLoggedIn = !!user;
+  const role: "user" | "admin" = user?.role || "user";
 
-  console.log(`[Navbar] Dark Theme Render - Logged In: ${isLoggedIn}, Role: ${role}`);
+  // console.log(`[Navbar] Dark Theme Render - Logged In: ${isLoggedIn}, Role: ${role}`);
 
+  
   return (
     // ব্যাকগ্রাউন্ড পরিবর্তন করে #35858E এবং বর্ডার rgba(255,255,255,0.1) করা হলো
     <header className="sticky top-0 z-50 w-full bg-[#35858E] border-b border-white/10 shadow-md">

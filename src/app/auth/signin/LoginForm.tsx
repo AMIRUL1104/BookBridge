@@ -70,6 +70,7 @@ export default function LoginForm() {
               // স্টেট ক্লিয়ার করে হোম পেজে রিডাইরেক্ট
               setIsLoading(false);
               router.push(searchParams.get("redirect") || "/");
+               router.refresh(); // রিডাইরেক্টের পর নতুন সেশন ডেটা লোড করার জন্য
             }
           } catch (err) {
             // নেটওয়ার্ক বা অন্য কোনো আনএক্সপেক্টেড এরর হ্যান্ডেল করার জন্য
