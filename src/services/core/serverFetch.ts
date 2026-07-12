@@ -2,14 +2,14 @@
 import { getUserToken } from "./session";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-export const authHeader = async () => {
+export const authHeader = async (): Promise<HeadersInit> => {
   const token = await getUserToken();
-  const header = token
-    ? {
-        authorization: `Bearer ${token} `,
-      }
-    : {};
-  return header;
+
+  if (!token) return {};
+
+  return {
+    Authorization: `Bearer ${token}`,
+  };
 };
 
 export async function serverFetch<T>(

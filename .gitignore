@@ -40,10 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-imagebb.ts
+# imagebb.ts
 
-server.ts
+# server.ts
 # serverFetch.ts
 
-action.ts
+# action.ts
 # api.ts
