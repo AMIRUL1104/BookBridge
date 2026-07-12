@@ -1,6 +1,6 @@
 // src/components/browse-books/BooksGrid.tsx
 import BookCard from "@/components/shared/BookCard";
-import { BookItem } from "@/interface/postDetails";
+import { BookItem } from "@/interface/post related/postDetails";
 import { getPosts } from "@/services/server/api";
 
 interface BooksGridProps {

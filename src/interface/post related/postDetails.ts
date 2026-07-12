@@ -1,6 +1,8 @@
 export interface BookItem {
   _id: string;
   sellerId: string;
+  sellerName: string;
+  sellerEmail: string;
   title: string;
   category: string;
   type: "sell" | "donate"; // API-তে ছোট হাতের অক্ষরে থাকে

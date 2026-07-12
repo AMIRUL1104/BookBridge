@@ -3,7 +3,7 @@ import Link from "next/link";
 import { MapPin, BookOpen, Tag } from "lucide-react";
 
 // API Response অনুযায়ী Interface আপডেট করা হয়েছে
-import { BookItem } from "@/interface/postDetails";
+import { BookItem } from "@/interface/post related/postDetails";
 
 interface BookCardProps {
   book: BookItem;

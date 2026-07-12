@@ -4,7 +4,7 @@ import SectionHeading from "@/components/shared/SectionHeading";
 import FilterSection from "@/components/browse-books/FilterSection";
 import BooksGrid from "@/components/browse-books/BooksGrid";
 import { getPosts } from "@/services/server/api"; // এপিআই ইমপোর্ট করা হলো
-import { BookItem } from "@/interface/postDetails"; // ইন্টারফেস ইমপোর্ট করা হলো
+import { BookItem } from "@/interface/post related/postDetails"; // ইন্টারফেস ইমপোর্ট করা হলো
 import CustomPagination from "@/components/browse-books/BooksPagination";
 
 // Next.js Metadata API

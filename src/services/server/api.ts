@@ -1,23 +1,7 @@
-import { BookItem } from "@/interface/postDetails";
+import { GetPostsParams } from "@/interface/post related/getPostsParams";
 import { serverFetch } from "../core/serverFetch";
-
-interface GetPostsParams {
-  search?: string;
-  category?: string;
-  condition?: string;
-  listingType?: "sell" | "donate" | "";
-  sort?: "newest" | "oldest" | "title-asc" | "title-desc";
-  page?: number;
-  limit?: number;
-}
-
-interface BooksResponse<T> {
-  success: boolean;
-  books: T[];
-  total: number;
-  totalPages: number;
-  currentPage: number;
-}
+import { PostResponse } from "@/interface/post related/postResponse";
+import { BooksResponse } from "@/interface/post related/booksResponse";
 
 export const getPosts = async <T>({
   search = "",
@@ -57,12 +41,17 @@ export const getPosts = async <T>({
   return result;
 };
 
-export interface PostResponse {
-  success: boolean;
-  data: BookItem;
-}
 export const getPostById = async (id: string): Promise<PostResponse | null> => {
   return serverFetch<PostResponse>(`/api/posts/${id}`);
+};
+
+export const getMyPosts = async <T>(
+  userId: string,
+): Promise<BooksResponse<T> | null> => {
+  const result = await serverFetch<BooksResponse<T>>(
+    `/api/posts/my?sellerId=${userId}`,
+  );
+  return result;
 };
 
 // export const getDoctorStats = async (doctorId) => {
@@ -73,31 +62,6 @@ export const getPostById = async (id: string): Promise<PostResponse | null> => {
 // //========================= get patients by id =====================
 // export const getPatientById = async (id) => {
 //   return protectedFetch(`/api/patients/${id}`);
-// };
-
-// export const getLimitedDoctors = async ({
-//   search = "",
-//   sort = "",
-//   page,
-//   limit = 6,
-//   verificationStatus = "verified",
-// } = {}) => {
-//   const params = new URLSearchParams();
-
-//   if (search) params.set("search", search);
-//   if (sort) params.set("sort", sort);
-//   params.set("page", String(page));
-//   params.set("limit", String(limit));
-//   if (verificationStatus) params.set("verificationStatus", verificationStatus);
-
-//   const result = await serverFetch(`/api/doctors?${params.toString()}`);
-
-//   // serverFetch returns null on failure — guard against that here
-//   if (!result) {
-//     return { doctors: [], total: 0, totalPages: 1, currentPage: page };
-//   }
-
-//   return result;
 // };
 
 // // ======================get doctors by id =====================
