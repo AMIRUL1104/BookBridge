@@ -1,10 +1,11 @@
-import DashboardOverview from "@/components/dashboard/DashboardOverview";
+
+import DashboardOverview from "@/components/dashboard/user/DashboardOverview";
 // import { userQuickActions } from "@/components/dashboard/user/dummy-data";
 import {
   userStats,
   userActivities,
   userQuickActions,
-} from "@/components/dashboard/dummy-data";
+} from "@/components/dashboard/user/dummy-data";
 
 export default function UserDashboardPage() {
   return (

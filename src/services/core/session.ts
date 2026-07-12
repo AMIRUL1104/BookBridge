@@ -6,6 +6,8 @@ import { redirect } from "next/navigation";
 interface User {
   id: string;
   email: string;
+  name?: string | null;
+  image?: string | null;
   role: "user" | "admin" | null;
 }
 
@@ -26,8 +28,8 @@ export async function getUserSession(): Promise<User | null> {
 
 // ২. ইউজার টোকেন পাওয়ার ফাংশন
 export const getUserToken = async (): Promise<string | null> => {
-  const sessionData = await auth.api.getSession({ 
-    headers: await headers() 
+  const sessionData = await auth.api.getSession({
+    headers: await headers(),
   });
   return sessionData?.session?.token || null;
 };
@@ -40,6 +42,6 @@ export const requireRole = async (allowedRole: "user" | "admin") => {
   if (!user || user.role !== allowedRole) {
     return redirect("/unauthorized");
   }
-  
+
   return user; // রোল মিললে ইউজার অবজেক্ট রিটার্ন করতে পারেন
 };

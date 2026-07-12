@@ -15,7 +15,7 @@ export default async function AddPostPage() {
   if (!user) {
     redirect("/auth/signin?redirect=/books/add");
   }
-  console.log(user) 
+  // console.log(user) 
   return (
     <main className="px-4 py-8 sm:py-12 bg-[#F5F7F8]">
       <div className="max-w-2xl mx-auto mb-8">
