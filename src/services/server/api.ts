@@ -2,6 +2,8 @@ import { GetPostsParams } from "@/interface/post related/getPostsParams";
 import { serverFetch } from "../core/serverFetch";
 import { PostResponse } from "@/interface/post related/postResponse";
 import { BooksResponse } from "@/interface/post related/booksResponse";
+import { CheckBookRequestResponse } from "@/interface/bookRequest/checkRequest";
+import { BookRequestResponse } from "@/interface/bookRequest/bookRequest";
 
 export const getPosts = async <T>({
   search = "",
@@ -54,6 +56,25 @@ export const getMyPosts = async <T>(
   return result;
 };
 
+export const checkBookRequest = async (
+  postId: string,
+  sellerId: string,
+  requesterId: string,
+): Promise<CheckBookRequestResponse | null> => {
+  const result = await serverFetch<CheckBookRequestResponse>(
+    `/api/book-requests/check?postId=${postId}&sellerId=${sellerId}&requesterId=${requesterId}`,
+  );
+  return result;
+};
+
+export const getSentRequests = async (
+  userId: string,
+): Promise<BookRequestResponse | null> => {
+  const result = await serverFetch<BookRequestResponse>(
+    `/api/book-requests/sent?requesterId=${userId}`,
+  );
+  return result;
+};
 // export const getDoctorStats = async (doctorId) => {
 //   return protectedFetch(`/api/stats/doctor?id=${doctorId}`);
 // };

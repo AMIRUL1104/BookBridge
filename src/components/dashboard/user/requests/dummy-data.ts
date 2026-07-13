@@ -4,6 +4,7 @@ import {
   SentRequest,
 } from "@/interface/dashboard/request";
 
+//  when a user sent request . this data save
 export const dummySentRequests: SentRequest[] = [
   {
     id: "sr-1",
@@ -54,6 +55,7 @@ export const dummySentRequests: SentRequest[] = [
   },
 ];
 
+// for request recive right pannel
 export const dummyPosts: PostSummary[] = [
   {
     id: "post-1",
