@@ -75,6 +75,14 @@ export const getSentRequests = async (
   );
   return result;
 };
+export const getReceivedRequests = async (
+  userId: string,
+): Promise<BookRequestResponse | null> => {
+  const result = await serverFetch<BookRequestResponse>(
+    `/api/book-requests/received?sellerId=${userId}`,
+  );
+  return result;
+};
 // export const getDoctorStats = async (doctorId) => {
 //   return protectedFetch(`/api/stats/doctor?id=${doctorId}`);
 // };

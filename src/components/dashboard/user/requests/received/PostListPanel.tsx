@@ -21,7 +21,7 @@ export function PostListPanel({
       <div className="flex flex-col gap-2">
         {posts.map((post) => (
           <PostListItem
-            key={post.id}
+            key={post._id}
             post={post}
             isActive={post.id === activePostId}
             onSelect={onSelectPost}

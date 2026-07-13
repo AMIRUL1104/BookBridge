@@ -10,6 +10,8 @@ import { RequestBookFormValues, requestBookSchema } from "@/lib/validaions/reque
 import { createBookRequest } from "@/services/server/action";
 
 interface RequestBookFormProps {
+  bookCoverUrl: string;
+  sellerPhone: string;
   postId: string;
   sellerId: string;
   requesterId?: string;
@@ -22,6 +24,8 @@ interface RequestBookFormProps {
 }
 
 export default function RequestBookForm({
+  bookCoverUrl,
+  sellerPhone,
   postId,
   sellerId,
   requesterId,
@@ -59,7 +63,7 @@ export default function RequestBookForm({
       const payload: BookRequest = {
         postId,
         postTitle,
-        bookCoverUrl: "",
+        bookCoverUrl,
         sellerId,
         sellerName,
         requesterId,

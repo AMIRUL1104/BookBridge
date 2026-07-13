@@ -28,11 +28,10 @@ export function sortReceivedRequests(
   requests: ReceivedRequest[],
   sortOption: SortOption,
 ): ReceivedRequest[] {
-  const sorted = [...requests].sort((a, b) => {
+  return [...requests].sort((a, b) => {
     const dateA = new Date(a.requestDate).getTime();
     const dateB = new Date(b.requestDate).getTime();
+
     return sortOption === "newest" ? dateB - dateA : dateA - dateB;
   });
-
-  return sorted;
 }

@@ -7,13 +7,13 @@ import {
 //  when a user sent request . this data save
 export const dummySentRequests: SentRequest[] = [
   {
-    id: "sr-1",
+    id: "sr-1", //change
     postId: "post-101",
     postTitle: "Physics 1st Paper (HSC)",
     bookCoverUrl:
       "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=200&h=280&fit=crop",
     sellerName: "Tanvir Ahmed",
-    requestDate: "2026-07-10T09:30:00.000Z",
+    requestDate: "2026-07-10T09:30:00.000Z", //change by createdAt
     status: "accepted",
     message: "Is the book still available? I can pick it up this week.",
     sellerContact: {
@@ -52,38 +52,6 @@ export const dummySentRequests: SentRequest[] = [
     requestDate: "2026-07-02T11:00:00.000Z",
     status: "pending",
     message: "Hi, I need this urgently for my exam next week.",
-  },
-];
-
-// for request recive right pannel
-export const dummyPosts: PostSummary[] = [
-  {
-    id: "post-1",
-    title: "Physics 1st Paper",
-    bookCoverUrl:
-      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=100&h=140&fit=crop",
-    pendingCount: 3,
-  },
-  {
-    id: "post-2",
-    title: "Chemistry 2nd Paper",
-    bookCoverUrl:
-      "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=100&h=140&fit=crop",
-    pendingCount: 1,
-  },
-  {
-    id: "post-3",
-    title: "Biology Guide",
-    bookCoverUrl:
-      "https://images.unsplash.com/photo-1509266272358-7701da638078?w=100&h=140&fit=crop",
-    pendingCount: 0,
-  },
-  {
-    id: "post-4",
-    title: "Higher Math 2nd Paper",
-    bookCoverUrl:
-      "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=100&h=140&fit=crop",
-    pendingCount: 0,
   },
 ];
 
@@ -152,4 +120,36 @@ export const dummyReceivedRequests: ReceivedRequest[] = [
   },
   // post-3 (Biology Guide) - 0 pending, no requests at all
   // post-4 (Higher Math 2nd Paper) - 0 pending, no requests at all
+];
+
+// for request recive right pannel
+export const dummyPosts: PostSummary[] = [
+  {
+    id: "post-1",
+    title: "Physics 1st Paper",
+    bookCoverUrl:
+      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=100&h=140&fit=crop",
+    pendingCount: 3,
+  },
+  {
+    id: "post-2",
+    title: "Chemistry 2nd Paper",
+    bookCoverUrl:
+      "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=100&h=140&fit=crop",
+    pendingCount: 1,
+  },
+  {
+    id: "post-3",
+    title: "Biology Guide",
+    bookCoverUrl:
+      "https://images.unsplash.com/photo-1509266272358-7701da638078?w=100&h=140&fit=crop",
+    pendingCount: 0,
+  },
+  {
+    id: "post-4",
+    title: "Higher Math 2nd Paper",
+    bookCoverUrl:
+      "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=100&h=140&fit=crop",
+    pendingCount: 0,
+  },
 ];
