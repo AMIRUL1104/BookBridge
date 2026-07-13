@@ -19,8 +19,12 @@ interface RequestBookButtonProps {
   requesterId?: string;
   postTitle: string;
   sellerName: string;
+  bookCoverUrl: string;
+  sellerPhone: string;
+  sellerMessenger?: string;
   requesterName?: string;
   requesterPhone?: string;
+  requesterAvatarUrl?: string | null;
 }
 
 export default function RequestBookButton({
@@ -29,8 +33,12 @@ export default function RequestBookButton({
   requesterId,
   postTitle,
   sellerName,
+  bookCoverUrl,
+  sellerPhone,
+  sellerMessenger,
   requesterName,
   requesterPhone,
+  requesterAvatarUrl,
 }: RequestBookButtonProps) {
   const [status, setStatus] = useState<ButtonStatus>("checking");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -142,8 +150,12 @@ export default function RequestBookButton({
         requesterId={requesterId ?? ""}
         postTitle={postTitle}
         sellerName={sellerName}
+        bookCoverUrl={bookCoverUrl}
+        sellerPhone={sellerPhone}
+        sellerMessenger={sellerMessenger}
         requesterName={requesterName}
         requesterPhone={requesterPhone}
+        requesterAvatarUrl={requesterAvatarUrl}
         onSuccess={handleRequestSuccess}
       />
     </>

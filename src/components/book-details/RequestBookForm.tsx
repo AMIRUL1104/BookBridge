@@ -12,6 +12,7 @@ import { createBookRequest } from "@/services/server/action";
 interface RequestBookFormProps {
   bookCoverUrl: string;
   sellerPhone: string;
+  sellerMessenger?: string;
   postId: string;
   sellerId: string;
   requesterId?: string;
@@ -19,6 +20,7 @@ interface RequestBookFormProps {
   sellerName: string;
   defaultRequesterName?: string;
   defaultRequesterPhone?: string;
+  requesterAvatarUrl?: string | null;
   onCancel: () => void;
   onSuccess: () => void;
 }
@@ -26,6 +28,7 @@ interface RequestBookFormProps {
 export default function RequestBookForm({
   bookCoverUrl,
   sellerPhone,
+  sellerMessenger,
   postId,
   sellerId,
   requesterId,
@@ -33,6 +36,7 @@ export default function RequestBookForm({
   sellerName,
   defaultRequesterName,
   defaultRequesterPhone,
+  requesterAvatarUrl,
   onCancel,
   onSuccess,
 }: RequestBookFormProps) {
@@ -66,8 +70,13 @@ export default function RequestBookForm({
         bookCoverUrl,
         sellerId,
         sellerName,
+        sellerContact: {
+          phone: sellerPhone,
+          messenger: sellerMessenger,
+        },
         requesterId,
         requesterName: values.requesterName,
+        requesterAvatarUrl: requesterAvatarUrl ?? undefined,
         requesterContact: {
           phone: values.phoneNumber,
         },

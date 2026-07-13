@@ -47,7 +47,19 @@ export default async function BookMetaCard({ post }: BookMetaCardProps) {
 
       {/* Footer section container (.card__footer) */}
       <div className="card__footer w-full pt-4">
-        <RequestBookButton postId={post._id} sellerId={post.sellerId} requesterId={user?.id} postTitle={post.title} sellerName={post.sellerName} requesterName={user?.name} requesterPhone={user?.phone} />
+        <RequestBookButton
+          postId={post._id}
+          sellerId={post.sellerId}
+          requesterId={user?.id}
+          postTitle={post.title}
+          sellerName={post.sellerName}
+          bookCoverUrl={post.image}
+          sellerPhone={post.phone}
+          sellerMessenger={post.messenger}
+          requesterName={user?.name}
+          requesterPhone={user?.phone}
+          requesterAvatarUrl={user?.image}
+        />
       </div>
 
     </Card>

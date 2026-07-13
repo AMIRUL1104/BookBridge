@@ -12,8 +12,12 @@ interface RequestBookModalProps {
   requesterId: string;
   postTitle: string;
   sellerName: string;
+  bookCoverUrl: string;
+  sellerPhone: string;
+  sellerMessenger?: string;
   requesterName?: string;
   requesterPhone?: string;
+  requesterAvatarUrl?: string | null;
   onSuccess: () => void;
 }
 
@@ -25,8 +29,12 @@ export default function RequestBookModal({
   requesterId,
   postTitle,
   sellerName,
+  bookCoverUrl,
+  sellerPhone,
+  sellerMessenger,
   requesterName,
   requesterPhone,
+  requesterAvatarUrl,
   onSuccess,
 }: RequestBookModalProps) {
   useEffect(() => {
@@ -94,8 +102,12 @@ export default function RequestBookModal({
           requesterId={requesterId}
           postTitle={postTitle}
           sellerName={sellerName}
+          bookCoverUrl={bookCoverUrl}
+          sellerPhone={sellerPhone}
+          sellerMessenger={sellerMessenger}
           defaultRequesterName={requesterName}
           defaultRequesterPhone={requesterPhone}
+          requesterAvatarUrl={requesterAvatarUrl}
           onCancel={onClose}
           onSuccess={onSuccess}
         />
