@@ -65,8 +65,8 @@ export default function BookInformation({ post }: BookInfoProps) {
               </tr>
             </thead>
             <tbody className="divide-y divide-[#DDE5E7] text-xs sm:text-sm text-gray-700">
-              {post.books.map((book) => (
-                <tr key={book.bookId} className="hover:bg-gray-50/50 transition-colors">
+              {post.books.map((book,i) => (
+                <tr key={i} className="hover:bg-gray-50/50 transition-colors">
                   <td className="p-3 font-bold text-gray-900">{book.bookName}</td>
                   <td className="p-3 text-gray-500">{book.publisherName}</td>
                   <td className="p-3">
