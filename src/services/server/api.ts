@@ -1,5 +1,5 @@
 import { GetPostsParams } from "@/interface/post related/getPostsParams";
-import { serverFetch } from "../core/serverFetch";
+import { protectedFetch, serverFetch } from "../core/serverFetch";
 import { PostResponse } from "@/interface/post related/postResponse";
 import { BooksResponse } from "@/interface/post related/booksResponse";
 import { CheckBookRequestResponse } from "@/interface/bookRequest/checkRequest";
@@ -47,12 +47,8 @@ export const getPostById = async (id: string): Promise<PostResponse | null> => {
   return serverFetch<PostResponse>(`/api/posts/${id}`);
 };
 
-export const getMyPosts = async <T>(
-  userId: string,
-): Promise<BooksResponse<T> | null> => {
-  const result = await serverFetch<BooksResponse<T>>(
-    `/api/posts/my?sellerId=${userId}`,
-  );
+export const getMyPosts = async <T>(): Promise<BooksResponse<T> | null> => {
+  const result = await protectedFetch<BooksResponse<T>>(`/api/posts/my`);
   return result;
 };
 
@@ -70,7 +66,7 @@ export const checkBookRequest = async (
 export const getSentRequests = async (
   userId: string,
 ): Promise<BookRequestResponse | null> => {
-  const result = await serverFetch<BookRequestResponse>(
+  const result = await protectedFetch<BookRequestResponse>(
     `/api/book-requests/sent?requesterId=${userId}`,
   );
   return result;
@@ -78,27 +74,8 @@ export const getSentRequests = async (
 export const getReceivedRequests = async (
   userId: string,
 ): Promise<BookRequestResponse | null> => {
-  const result = await serverFetch<BookRequestResponse>(
+  const result = await protectedFetch<BookRequestResponse>(
     `/api/book-requests/received?sellerId=${userId}`,
   );
   return result;
 };
-// export const getDoctorStats = async (doctorId) => {
-//   return protectedFetch(`/api/stats/doctor?id=${doctorId}`);
-// };
-// import { protectedFetch, serverFetch } from "../core/serverFetch";
-
-// //========================= get patients by id =====================
-// export const getPatientById = async (id) => {
-//   return protectedFetch(`/api/patients/${id}`);
-// };
-
-// // ======================get doctors by id =====================
-// export const getDoctorById = async (id, query) => {
-//   return protectedFetch(`/api/doctors/${id}?from=${query}`);
-// };
-
-// // ====================== get stats =====================
-// export const getPosts = async () => {
-//   return serverFetch(`/api/posts`);
-// };

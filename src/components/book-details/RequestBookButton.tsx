@@ -48,7 +48,7 @@ export default function RequestBookButton({
 
     const runCheck = async () => {
       const result: CheckBookRequestResponse | null = await checkBookRequest(postId, sellerId, requesterId);
-      console.log(result)
+      // console.log(result)
       if (!isMounted) return;
 
       if (!result?.success) {

@@ -12,7 +12,7 @@ export default async function BookMetaCard({ post }: BookMetaCardProps) {
   const user = await getUserSession();
   // বান্ডেলের সব বইয়ের দাম একসাথে যোগ করা হচ্ছে (Total Sum)
   const totalBundlePrice = post.books.reduce((acc, book) => acc + book.price, 0);
-  console.log(post)
+  // console.log(post)
   return (
     // HeroUI v3 এর মূল কন্টেইনার ক্লাস (.card)
     <Card className="card bg-white border border-[#DDE5E7] rounded-2xl p-5 shadow-xs flex flex-col justify-between h-full">

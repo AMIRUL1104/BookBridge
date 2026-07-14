@@ -39,10 +39,25 @@ export async function serverFetch<T>(
   }
 }
 
-// export const protectedFetch = async (path: string) => {
-//   const res = await fetch(`${baseUrl}${path}`, {
-//     headers : await authHeader(),
-//   });
+export async function protectedFetch<T>(path: string): Promise<T | null> {
+  try {
+    const res = await fetch(`${baseUrl}${path}`, {
+      headers: {
+        "Content-Type": "application/json",
+        ...(await authHeader()),
+      },
+      cache: "no-store",
+    });
 
-//   return res.json();
-// };
+    if (!res.ok) {
+      const errorText = await res.text();
+
+      throw new Error(`Server returned ${res.status}: ${errorText}`);
+    }
+
+    return (await res.json()) as T;
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return null;
+  }
+}
