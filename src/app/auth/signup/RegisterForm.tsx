@@ -11,6 +11,7 @@ import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { useSearchParams } from "next/navigation";
+import { createUserProfile } from "@/services/server/action";
 
 
 /**
@@ -62,7 +63,7 @@ export default function RegisterForm() {
   const onSubmit = async (userData: RegisterFormValues) => {
     setIsLoading(true);
     // console.log("[RegisterForm] Form Data is Valid. Submitting to Better Auth:", userData);
-    
+
     try {
       // Better Auth ক্লায়েন্ট কল
       const { data, error } = await authClient.signUp.email({
@@ -81,9 +82,11 @@ export default function RegisterForm() {
 
       // সফলভাবে রেজিস্ট্রেশন সম্পন্ন হলে
       if (data?.user) {
-        console.log("[RegisterForm] User registered successfully:", data.user);
+        // console.log("[RegisterForm] User registered successfully:", data.user);
+        await createUserProfile();
+        // console.log(res);
         toast.success("Registration successful! Welcome to BookBridge.");
-        
+
         // স্টেট ক্লিয়ার করে হোম পেজে রিডাইরেক্ট
         setIsLoading(false);
         router.push(redirectUrl);
@@ -100,7 +103,7 @@ export default function RegisterForm() {
   return (
     <div className="w-full flex flex-col gap-5">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-        
+
         {/* Full Name Field */}
         <div className="flex flex-col gap-1.5">
           <label htmlFor="fullName" className="text-xs font-bold text-gray-700 uppercase tracking-wider">
@@ -113,9 +116,8 @@ export default function RegisterForm() {
               type="text"
               placeholder="Amirul Islam"
               {...register("fullName")}
-              className={`w-full bg-white border ${
-                errors.fullName ? "border-red-500 focus:border-red-500" : "border-[#DDE5E7] focus:border-[#35858E]"
-              } rounded-xl pl-10 pr-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-hidden transition-all`}
+              className={`w-full bg-white border ${errors.fullName ? "border-red-500 focus:border-red-500" : "border-[#DDE5E7] focus:border-[#35858E]"
+                } rounded-xl pl-10 pr-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-hidden transition-all`}
             />
           </div>
           {errors.fullName && (
@@ -135,9 +137,8 @@ export default function RegisterForm() {
               type="email"
               placeholder="amirul@student.com"
               {...register("email")}
-              className={`w-full bg-white border ${
-                errors.email ? "border-red-500 focus:border-red-500" : "border-[#DDE5E7] focus:border-[#35858E]"
-              } rounded-xl pl-10 pr-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-hidden transition-all`}
+              className={`w-full bg-white border ${errors.email ? "border-red-500 focus:border-red-500" : "border-[#DDE5E7] focus:border-[#35858E]"
+                } rounded-xl pl-10 pr-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-hidden transition-all`}
             />
           </div>
           {errors.email && (
@@ -157,9 +158,8 @@ export default function RegisterForm() {
               type={showPassword ? "text" : "password"}
               placeholder="••••••••"
               {...register("password")}
-              className={`w-full bg-white border ${
-                errors.password ? "border-red-500 focus:border-red-500" : "border-[#DDE5E7] focus:border-[#35858E]"
-              } rounded-xl pl-10 pr-10 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-hidden transition-all`}
+              className={`w-full bg-white border ${errors.password ? "border-red-500 focus:border-red-500" : "border-[#DDE5E7] focus:border-[#35858E]"
+                } rounded-xl pl-10 pr-10 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-hidden transition-all`}
             />
             <button
               type="button"
@@ -186,9 +186,8 @@ export default function RegisterForm() {
               type={showPassword ? "text" : "password"}
               placeholder="••••••••"
               {...register("confirmPassword")}
-              className={`w-full bg-white border ${
-                errors.confirmPassword ? "border-red-500 focus:border-red-500" : "border-[#DDE5E7] focus:border-[#35858E]"
-              } rounded-xl pl-10 pr-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-hidden transition-all`}
+              className={`w-full bg-white border ${errors.confirmPassword ? "border-red-500 focus:border-red-500" : "border-[#DDE5E7] focus:border-[#35858E]"
+                } rounded-xl pl-10 pr-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-hidden transition-all`}
             />
           </div>
           {errors.confirmPassword && (

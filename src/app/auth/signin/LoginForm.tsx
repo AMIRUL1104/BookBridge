@@ -11,7 +11,7 @@ import SocialAuth from "./SocialAuth";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import {useSearchParams} from "next/navigation";
+import { useSearchParams } from "next/navigation";
 // Zod Validation Schema Definition
 const loginSchema = z.object({
   email: z.string().min(1, "Email is required").email("Please enter a valid email address"),
@@ -21,7 +21,7 @@ const loginSchema = z.object({
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
-export default function LoginForm() { 
+export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -45,46 +45,47 @@ export default function LoginForm() {
     setIsLoading(true);
     // console.log("[LoginForm] Validated Credentials Submitted:", data);
 
-          try {
-            // Better Auth ক্লায়েন্ট কল
-           const { data, error } = await authClient.signIn.email({
-                email:  userData.email, // required
-                password: userData.password, // required
-                rememberMe: userData.rememberMe,
-    
-            });
-      
-            // যদি Better Auth কোনো এরর রিটার্ন করে (যেমন: Email already exists)
-            if (error) {
-              // console.error("[RegisterForm] Better Auth error:", error.message);
-              toast.error(error.message || "Something went wrong during sign in.");
-              setIsLoading(false);
-              return; // এখানেই ফাংশন থামিয়ে দেওয়া হলো
-            }
-      
-            // সফলভাবে রেজিস্ট্রেশন সম্পন্ন হলে
-            if (data?.user) {
-              // console.log("[RegisterForm] User registered successfully:", data.user);
-              toast.success(" Welcome to BookBridge.");
-              
-              // স্টেট ক্লিয়ার করে হোম পেজে রিডাইরেক্ট
-              setIsLoading(false);
-              router.push(searchParams.get("redirect") || "/");
-               router.refresh(); // রিডাইরেক্টের পর নতুন সেশন ডেটা লোড করার জন্য
-            }
-          } catch (err) {
-            // নেটওয়ার্ক বা অন্য কোনো আনএক্সপেক্টেড এরর হ্যান্ডেল করার জন্য
-            // console.error("[RegisterForm] Unexpected network error:", err);
-            toast.error("Network error. Please check your connection and try again.");
-            setIsLoading(false);
-          }
+    try {
+      // Better Auth ক্লায়েন্ট কল
+      const { data, error } = await authClient.signIn.email({
+        email: userData.email, // required
+        password: userData.password, // required
+        rememberMe: userData.rememberMe,
+
+      });
+
+      // যদি Better Auth কোনো এরর রিটার্ন করে (যেমন: Email already exists)
+      if (error) {
+        // console.error("[RegisterForm] Better Auth error:", error.message);
+        toast.error(error.message || "Something went wrong during sign in.");
+        setIsLoading(false);
+        return; // এখানেই ফাংশন থামিয়ে দেওয়া হলো
+      }
+
+      // সফলভাবে রেজিস্ট্রেশন সম্পন্ন হলে
+      if (data?.user) {
+
+        // console.log("[RegisterForm] User registered successfully:", data.user);
+        toast.success(" Welcome to BookBridge.");
+
+        // স্টেট ক্লিয়ার করে হোম পেজে রিডাইরেক্ট
+        setIsLoading(false);
+        router.push(searchParams.get("redirect") || "/");
+        router.refresh(); // রিডাইরেক্টের পর নতুন সেশন ডেটা লোড করার জন্য
+      }
+    } catch (err) {
+      // নেটওয়ার্ক বা অন্য কোনো আনএক্সপেক্টেড এরর হ্যান্ডেল করার জন্য
+      // console.error("[RegisterForm] Unexpected network error:", err);
+      toast.error("Network error. Please check your connection and try again.");
+      setIsLoading(false);
+    }
     setIsLoading(false);
   };
 
   return (
     <div className="w-full flex flex-col gap-5">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-        
+
         {/* Email Input Field */}
         <div className="flex flex-col gap-1.5">
           <label htmlFor="email" className="text-xs font-bold text-gray-700 uppercase tracking-wider">
@@ -97,9 +98,8 @@ export default function LoginForm() {
               type="email"
               placeholder="name@student.com"
               {...register("email")}
-              className={`w-full bg-white border ${
-                errors.email ? "border-red-500 focus:border-red-500" : "border-[#DDE5E7] focus:border-[#35858E]"
-              } rounded-xl pl-10 pr-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-hidden transition-all`}
+              className={`w-full bg-white border ${errors.email ? "border-red-500 focus:border-red-500" : "border-[#DDE5E7] focus:border-[#35858E]"
+                } rounded-xl pl-10 pr-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-hidden transition-all`}
             />
           </div>
           {errors.email && (
@@ -119,9 +119,8 @@ export default function LoginForm() {
               type={showPassword ? "text" : "password"}
               placeholder="••••••••"
               {...register("password")}
-              className={`w-full bg-white border ${
-                errors.password ? "border-red-500 focus:border-red-500" : "border-[#DDE5E7] focus:border-[#35858E]"
-              } rounded-xl pl-10 pr-10 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-hidden transition-all`}
+              className={`w-full bg-white border ${errors.password ? "border-red-500 focus:border-red-500" : "border-[#DDE5E7] focus:border-[#35858E]"
+                } rounded-xl pl-10 pr-10 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-hidden transition-all`}
             />
             <button
               type="button"

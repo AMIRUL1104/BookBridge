@@ -1,29 +1,20 @@
 import { ProfileClient } from "@/components/dashboard/user/profile/Profileclient";
-import { UserProfile } from "@/interface/user/userProfile";
-import React from "react";
+import { UserProfile, UserProfileResponse } from "@/interface/user/userProfile";
+import { getUserProfile } from "@/services/server/api";
 
 
-// ---------------------------------------------------------------------------
-// Dummy data — replace with: const user = await getUserProfile() or from
-// the session object passed down by the dashboard layout.
-// ---------------------------------------------------------------------------
-const DUMMY_USER: UserProfile = {
-    id: "usr_01j9k3m8xwpq4tnv0g",
-    fullName: "Amirul Islam",
-    email: "amirul@bookbridge.com",
-    phoneNumber: "+880 1712-345678",
-    district: "Dhaka",
-    area: "Mirpur 10",
-    avatarUrl: null,
-    role: "user",
-    memberSince: "2024-03-15T00:00:00.000Z",
-};
 
-export default function ProfilePage() {
-    // When the backend is connected, fetch here:
-    // const user = await getUserProfile();
-    const user: UserProfile = DUMMY_USER;
+export default async function ProfilePage() {
 
+    const profileResponse = await getUserProfile() as UserProfileResponse | null;
+
+    if (!profileResponse) {
+        return;
+    }
+
+    const user: UserProfile = profileResponse.data;
+
+    // console.log(user);
     return (
         <main className="min-h-screen bg-[#F5F7F8] px-4 py-8 sm:px-6 lg:px-8">
             <div className="max-w-2xl mx-auto">

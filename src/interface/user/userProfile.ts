@@ -1,5 +1,6 @@
 export interface UserProfile {
-  id: string;
+  _id: string;
+  userId: string;
   fullName: string;
   email: string;
   phoneNumber: string;
@@ -16,4 +17,9 @@ export interface UpdateProfilePayload {
   district: string;
   area: string;
   avatarUrl?: string | null;
+}
+
+export interface UserProfileResponse {
+  success: boolean;
+  data: UserProfile;
 }

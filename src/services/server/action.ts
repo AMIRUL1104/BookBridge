@@ -4,6 +4,10 @@ import { serverMutation } from "../core/server";
 import { authHeader } from "../core/serverFetch";
 import { id } from "zod/locales";
 import { BookRequestUpdateResponse } from "@/interface/bookRequest/bookRequest";
+import {
+  UpdateProfilePayload,
+  UserProfile,
+} from "@/interface/user/userProfile";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
 
 export const addNewPost = async (data: BookItem) => {
@@ -47,4 +51,14 @@ export const rejectBookRequest = async (id: string) => {
 
 export const cancelBookRequest = async (id: string) => {
   return serverMutation(`/api/book-requests/${id}/cancel`, {}, "PATCH");
+};
+
+// userProfile actions
+
+export const createUserProfile = async () => {
+  return serverMutation("/api/users", {});
+};
+
+export const updateUserProfile = async (data: UpdateProfilePayload) => {
+  return serverMutation<UpdateProfilePayload>("/api/users", data, "PATCH");
 };

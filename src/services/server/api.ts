@@ -4,6 +4,7 @@ import { PostResponse } from "@/interface/post related/postResponse";
 import { BooksResponse } from "@/interface/post related/booksResponse";
 import { CheckBookRequestResponse } from "@/interface/bookRequest/checkRequest";
 import { BookRequestResponse } from "@/interface/bookRequest/bookRequest";
+import { UserProfile } from "@/interface/user/userProfile";
 
 export const getPosts = async <T>({
   search = "",
@@ -77,5 +78,12 @@ export const getReceivedRequests = async (
   const result = await protectedFetch<BookRequestResponse>(
     `/api/book-requests/received?sellerId=${userId}`,
   );
+  return result;
+};
+
+// userProfile actions
+
+export const getUserProfile = async (): Promise<UserProfile | null> => {
+  const result = await protectedFetch<UserProfile>("/api/users");
   return result;
 };

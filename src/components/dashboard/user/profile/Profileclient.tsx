@@ -11,6 +11,7 @@ import { ProfileHeader } from "./Profileheader";
 import { ProfileForm } from "./Profileform";
 import { ProfileActions } from "./Profileactions";
 import { ProfileInfo } from "./Profileinfo";
+import { updateUserProfile } from "@/services/server/action";
 
 
 interface ProfileClientProps {
@@ -70,24 +71,25 @@ export function ProfileClient({ initialUser }: ProfileClientProps) {
             avatarUrl: previewUrl ?? user.avatarUrl,
         };
 
-        // Optimistically update local state
-        setUser((prev) => ({
-            ...prev,
-            fullName: payload.fullName,
-            phoneNumber: payload.phoneNumber,
-            district: payload.district,
-            area: payload.area,
-            avatarUrl: payload.avatarUrl ?? prev.avatarUrl,
-        }));
-
-        setIsEditing(false);
-        setPreviewUrl(null);
-        setPendingImageFile(null);
-
-        toast.success("Profile updated successfully!", {
-            position: "top-right",
-            autoClose: 3000,
-        });
+        const res = await updateUserProfile(payload);
+        console.log(res);
+        if (res.success) {
+            toast.success("Profile updated successfully!");
+            // Optimistically update local state
+            setUser((prev) => ({
+                ...prev,
+                fullName: payload.fullName,
+                phoneNumber: payload.phoneNumber,
+                district: payload.district,
+                area: payload.area,
+                avatarUrl: payload.avatarUrl ?? prev.avatarUrl,
+            }));
+            setIsEditing(false);
+            setPreviewUrl(null);
+            setPendingImageFile(null);
+        } else {
+            toast.error(res.message);
+        }
     }
 
     const avatarNode = (
