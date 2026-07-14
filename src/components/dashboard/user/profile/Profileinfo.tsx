@@ -29,7 +29,7 @@ function InfoField({ icon, label, value, locked }: InfoFieldProps) {
                         </span>
                     )}
                 </p>
-                <p className="text-sm font-medium text-gray-800 break-words">{value}</p>
+                <p className="text-sm font-medium text-gray-800 wrap-break-word">{value}</p>
             </div>
         </div>
     );

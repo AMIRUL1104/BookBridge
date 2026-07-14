@@ -26,7 +26,7 @@ export default function Footer() {
       {/* টপ সেকশন: ফোর-কলাম গ্রিড লেআউট */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
-          
+
           {/* কলাম ১: ব্র্যান্ড */}
           <FooterBrand />
 
