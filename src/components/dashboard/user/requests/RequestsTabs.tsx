@@ -15,8 +15,8 @@ export function RequestsTabs({
 }: RequestsTabsProps) {
   return (
     <Tabs className="w-full">
-      <Tabs.ListContainer className="border-b border-[#EDF1F2]">
-        <Tabs.List aria-label="Requests" className="gap-6">
+      <Tabs.ListContainer className="border-b border-[#EDF1F2] ">
+        <Tabs.List aria-label="Requests" className="gap-6 flex cursor-pointer  px-1">
           <Tabs.Tab
             id="sent"
             className="flex h-12 max-w-fit items-center gap-2 px-1 text-sm font-semibold text-gray-500 data-[selected=true]:font-bold data-[selected=true]:text-[#35858E]"

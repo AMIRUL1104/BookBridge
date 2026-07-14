@@ -20,6 +20,11 @@ const STATUS_CONFIG: Record<
     className: "bg-red-50 text-red-600 border-red-200",
     icon: XCircle,
   },
+  cancelled: {
+    label: "Cancelled",
+    className: "bg-gray-50 text-gray-600 border-gray-200",
+    icon: XCircle,
+  },
 };
 
 interface StatusBadgeProps {

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Calendar, MessageSquare, Phone, ShieldCheck } from "lucide-react";
 import type { SentRequest } from "@/interface/dashboard/request";
 import { StatusBadge } from "../StatusBadge";
+import ReceiveRequestActions from "../received/ReceiveRequestActions";
+import SentRequestActions from "./SentRequestActions";
 
 interface SentRequestCardProps {
   request: SentRequest;
@@ -71,12 +73,17 @@ export function SentRequestCard({ request }: SentRequestCardProps) {
           )}
         </div>
 
-        <Link
-          href={`/posts/${request.postId}`}
-          className="inline-flex w-fit items-center gap-1.5 rounded-xl border border-[#35858E] px-3.5 py-1.5 text-xs font-bold text-[#35858E] transition-colors hover:bg-[#35858E] hover:text-white"
-        >
-          View Post
-        </Link>
+        <div className="flex gap-5 ">
+
+          <Link
+            href={`/posts/${request.postId}`}
+            className="inline-flex w-fit items-center gap-1.5 rounded-xl border border-[#35858E] px-3.5 py-1.5 text-xs font-bold text-[#35858E] transition-colors hover:bg-[#35858E] hover:text-white"
+          >
+            View Post
+          </Link>
+
+          <SentRequestActions status={request.status} id={request.id} />
+        </div>
       </div>
     </div>
   );

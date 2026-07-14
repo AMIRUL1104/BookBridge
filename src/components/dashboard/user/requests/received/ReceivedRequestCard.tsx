@@ -2,6 +2,8 @@ import Image from "next/image";
 import { Calendar, Check, MessageSquare, X } from "lucide-react";
 import type { ReceivedRequest } from "@/interface/dashboard/request";
 import { StatusBadge } from "../StatusBadge";
+import ReceiveRequestActions from "./ReceiveRequestActions";
+
 
 interface ReceivedRequestCardProps {
   request: ReceivedRequest;
@@ -16,6 +18,7 @@ function formatDate(isoDate: string): string {
 }
 
 export function ReceivedRequestCard({ request }: ReceivedRequestCardProps) {
+  // console.log(request)
   return (
     <div className="flex flex-col gap-3 rounded-2xl border border-[#EDF1F2] bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:flex-row sm:items-start sm:gap-4">
       <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-[#7DA78C]/20">
@@ -53,24 +56,8 @@ export function ReceivedRequestCard({ request }: ReceivedRequestCardProps) {
           </p>
         )}
 
-        {request.status === "pending" && (
-          <div className="flex gap-2 pt-1">
-            <button
-              type="button"
-              className="inline-flex items-center gap-1.5 rounded-xl bg-[#35858E] px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition-colors hover:bg-[#35858E]/90"
-            >
-              <Check className="h-3.5 w-3.5" />
-              Accept
-            </button>
-            <button
-              type="button"
-              className="inline-flex items-center gap-1.5 rounded-xl border border-gray-200 px-3.5 py-1.5 text-xs font-bold text-gray-500 transition-colors hover:border-red-200 hover:bg-red-50 hover:text-red-500"
-            >
-              <X className="h-3.5 w-3.5" />
-              Reject
-            </button>
-          </div>
-        )}
+        <ReceiveRequestActions status={request.status} id={request.id} />
+
       </div>
     </div>
   );

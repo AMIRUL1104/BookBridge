@@ -32,7 +32,7 @@ export function ReceivedRequestsToolbar({
             value={search}
             onChange={(event) => onSearchChange(event.target.value)}
             placeholder="Search by requester name or message..."
-            className="w-full rounded-xl border border-[#DDE5E7] py-2.5 pl-10 pr-4 text-sm focus:border-[#35858E] focus:outline-none"
+            className="w-full text-gray-700 rounded-xl border border-[#DDE5E7] py-2.5 pl-10 pr-4 text-sm focus:border-[#35858E] focus:outline-none"
           />
         </div>
 

@@ -2,6 +2,8 @@ import { BookItem } from "@/interface/post related/postDetails";
 import { BookRequest } from "@/interface/bookRequest/checkRequest";
 import { serverMutation } from "../core/server";
 import { authHeader } from "../core/serverFetch";
+import { id } from "zod/locales";
+import { BookRequestUpdateResponse } from "@/interface/bookRequest/bookRequest";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
 
 export const addNewPost = async (data: BookItem) => {
@@ -33,4 +35,16 @@ export const deletePost = async (postId: string) => {
 
 export const createBookRequest = async (data: BookRequest) => {
   return serverMutation<BookRequest>("/api/book-requests", data);
+};
+
+export const acceptBookRequest = async (id: string) => {
+  return serverMutation(`/api/book-requests/${id}/accept`, {}, "PATCH");
+};
+
+export const rejectBookRequest = async (id: string) => {
+  return serverMutation(`/api/book-requests/${id}/reject`, {}, "PATCH");
+};
+
+export const cancelBookRequest = async (id: string) => {
+  return serverMutation(`/api/book-requests/${id}/cancel`, {}, "PATCH");
 };
