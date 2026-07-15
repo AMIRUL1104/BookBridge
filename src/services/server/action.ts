@@ -2,12 +2,7 @@ import { BookItem } from "@/interface/post related/postDetails";
 import { BookRequest } from "@/interface/bookRequest/checkRequest";
 import { serverMutation } from "../core/server";
 import { authHeader } from "../core/serverFetch";
-import { id } from "zod/locales";
-import { BookRequestUpdateResponse } from "@/interface/bookRequest/bookRequest";
-import {
-  UpdateProfilePayload,
-  UserProfile,
-} from "@/interface/user/userProfile";
+import { UpdateProfilePayload } from "@/interface/user/userProfile";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
 
 export const addNewPost = async (data: BookItem) => {

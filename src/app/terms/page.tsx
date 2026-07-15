@@ -1,6 +1,5 @@
 import React from "react";
 import { Metadata } from "next";
-import Link from "next/link";
 import TermsNavigation from "./TermsNavigation";
 import {
     FileText,
@@ -247,8 +246,11 @@ function TermsCard({ id, icon, title, children }: TermsCardProps) {
             className="bg-white border border-slate-200/80 rounded-2xl p-6 md:p-8 space-y-4 hover:border-[#35858E]/40 hover:shadow-sm transition-all duration-200 scroll-mt-6"
         >
             <div className="flex items-center gap-3.5 pb-3 border-b border-slate-100">
-                <div className="w-9 h-9 rounded-lg bg-[#35858E]/10 text-[#35858E] flex items-center justify-center shrink-0">
-                    {React.cloneElement(icon as React.ReactElement, { className: "w-5 h-5" })}
+                {/* [&_svg]:w-5 [&_svg]:h-5 ক্লাসটি চাইল্ড আইকনের 
+                  উইডথ ও হাইট অটোমেটিক সেট করে দিবে কোনো টাইপ এরর ছাড়াই।
+                */}
+                <div className="w-9 h-9 rounded-lg bg-[#35858E]/10 text-[#35858E] flex items-center justify-center shrink-0 [&_svg]:w-5 [&_svg]:h-5">
+                    {icon}
                 </div>
                 <h2 className="text-xl font-bold text-slate-900">{title}</h2>
             </div>

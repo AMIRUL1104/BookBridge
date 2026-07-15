@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Calendar, Check, MessageSquare, X } from "lucide-react";
+import { Calendar, MessageSquare } from "lucide-react";
 import type { ReceivedRequest } from "@/interface/dashboard/request";
 import { StatusBadge } from "../StatusBadge";
 import ReceiveRequestActions from "./ReceiveRequestActions";

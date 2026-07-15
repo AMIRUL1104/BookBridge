@@ -1,6 +1,6 @@
 // src/components/layout/navbar/NavigationLinks.tsx
 import Link from "next/link";
-import { Home, BookOpen, PlusCircle, LayoutDashboard, ShieldCheck } from "lucide-react";
+import { Home, BookOpen, PlusCircle, LayoutDashboard } from "lucide-react";
 
 interface NavigationLinksProps {
   isLoggedIn: boolean;
@@ -30,14 +30,14 @@ export default function NavigationLinks({ isLoggedIn, role, onLinkClick }: Navig
       { name: "Dashboard", href: `/dashboard/${role}`, icon: LayoutDashboard }
     );
 
-   
+
   }
 
   return (
     <>
       {links.map((link) => {
         const IconComponent = link.icon;
-        
+
         return (
           <Link
             key={link.href}

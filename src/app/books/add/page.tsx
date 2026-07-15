@@ -26,7 +26,7 @@ export default async function AddPostPage() {
         </p>
       </div>
 
-      <AddPostForm user={{ id: user.id, name: user.name, email: user.email }} />
+      <AddPostForm user={{ id: user.id, name: user.name as string, email: user.email as string }} />
     </main>
   );
 }

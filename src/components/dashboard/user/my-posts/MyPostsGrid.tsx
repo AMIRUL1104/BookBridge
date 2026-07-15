@@ -1,8 +1,7 @@
 import type { MyPost } from "./my-post";
 import BookCard from "@/components/shared/BookCard";
 import DeleteButton from "./DeleteButton";
-import Link from "next/link";
-import { Edit } from "lucide-react";
+
 
 interface MyPostsGridProps {
   posts: MyPost[];
@@ -21,7 +20,7 @@ export default function MyPostsGrid({ posts, onDeleted }: MyPostsGridProps) {
           >
           <Edit className="w-4 h-4"/>
           </Link> */}
-          
+
           <DeleteButton
             postId={post._id}
             postTitle={post.title}

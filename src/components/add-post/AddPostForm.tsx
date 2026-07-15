@@ -20,9 +20,9 @@ import { addNewPost } from "@/services/server/action";
 type AddPostFormInput = z.input<typeof addPostSchema>;
 
 // NewPostPayload থেকে sellerId আর বাদ দেওয়া যাবে না কারণ সার্ভার এটি আশা করে
-type NewPostPayload = Omit<
+export type NewPostPayload = Omit<
   BookItem,
-  "_id" |"publishedAt"
+  "_id" | "publishedAt"
 >;
 
 const defaultValues: AddPostFormInput = {
@@ -81,7 +81,7 @@ function buildPayload(values: AddPostFormValues): NewPostPayload {
   };
 }
 
-export default function AddPostForm({user}: {user: {id: string; name: string; email: string}}) {
+export default function AddPostForm({ user }: { user: { id: string; name: string; email: string } }) {
   const [isUploadPending, setIsUploadPending] = useState(false);
 
   const methods = useForm<AddPostFormInput, unknown, AddPostFormValues>({
@@ -107,7 +107,7 @@ export default function AddPostForm({user}: {user: {id: string; name: string; em
 
     try {
       const payload = buildPayload(updatedValues);
-      const response = await addNewPost(payload);
+      const response = await addNewPost(payload as unknown as BookItem);
 
       if (response?.success) {
         toast.success("Post published successfully!");
@@ -146,3 +146,5 @@ export default function AddPostForm({user}: {user: {id: string; name: string; em
     </FormProvider>
   );
 }
+
+

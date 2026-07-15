@@ -1,5 +1,5 @@
 // src/components/book-details/SellerCard.tsx
-import { User, MapPin, MessageSquare, PhoneOff } from "lucide-react";
+import { MapPin, MessageSquare } from "lucide-react";
 import { PostDetailData } from "@/app/books/[id]/page";
 
 interface SellerCardProps {
@@ -9,7 +9,7 @@ interface SellerCardProps {
 export default function SellerCard({ post }: SellerCardProps) {
   return (
     <div className="bg-white border border-[#DDE5E7] rounded-2xl p-5 shadow-xs flex flex-col gap-4">
-      <h3 className="font-bold text-gray-800 text-xs uppercase tracking-wider border-b border-[#DDE5E7] pb-2 text-gray-400">
+      <h3 className="font-bold text-gray-800 text-xs uppercase tracking-wider border-b border-[#DDE5E7] pb-2">
         Seller Profile
       </h3>
 
@@ -28,7 +28,7 @@ export default function SellerCard({ post }: SellerCardProps) {
           <MapPin className="w-4 h-4 text-gray-400 shrink-0" />
           <span>Location: {post.area}, {post.district}</span>
         </div>
-        
+
         {/* কন্ডিশনাল হোয়াটসঅ্যাপ/কমিউনিকেশন মেথড ইন্ডিকেটর */}
         <div className="flex items-center gap-2 mt-1">
           <MessageSquare className="w-4 h-4 text-emerald-500 shrink-0" />

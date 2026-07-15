@@ -1,13 +1,23 @@
 // src/components/home/FeaturedBooks.tsx
+import { BookItem } from "@/interface/post related/postDetails";
 import SectionHeading from "../shared/SectionHeading";
-import BookCard, { BookItem } from "../shared/BookCard";
+
 import { getFeaturedPosts, } from "@/services/server/api";
+import BookCard from "../shared/BookCard";
 
 export default async function FeaturedBooks() {
 
   const postData = await getFeaturedPosts();
+  if (!postData) {
+    return (
+      <main className="min-h-screen w-full bg-[#F5F7F8] flex items-center justify-center">
+        <p className="text-red-500 font-bold">Featured Books not found or data error!</p>
+      </main>
+    );
+  }
+  console.log(postData)
   // console.log("Fetched posts data:", postData);
-  const featuredBooks: BookItem[] = postData?.data || [];
+  const featuredBooks: BookItem[] = postData?.data || [] as BookItem[];
 
   return (
     <section className="py-16 lg:py-24 bg-white">

@@ -94,7 +94,7 @@ export default async function RequestsPage() {
   const receivedRequestsData = receivedResponse?.requests ?? [];
   const receivedRequests = receivedRequestsData.map(toReceivedRequest);
 
-  const myPostsResponse = await getMyPosts(userId);
+  const myPostsResponse = await getMyPosts();
   const postsData = (myPostsResponse?.books ?? []) as BookItem[];
   const posts = buildPostSummaries(postsData, receivedRequestsData);
 

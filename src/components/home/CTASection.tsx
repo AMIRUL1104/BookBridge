@@ -10,8 +10,8 @@ export default function CTASection() {
           Ready to Share Your Books?
         </h2>
         <p className="text-[#C2D099] text-base sm:text-lg max-w-xl leading-relaxed">
-          Help another student by selling or donating your unused academic books. Your small contribution can empower another's education journey.
-        </p>
+          {` Help another student by selling or donating your unused academic books. Your small contribution can empower another's education journey.
+`}        </p>
         <Link
           href="/books/add"
           className="inline-flex items-center gap-2 text-sm font-bold text-gray-900 bg-[#F6CE71] hover:bg-[#F6CE71]/90 px-6 py-3 rounded-xl transition-all shadow-md mt-2 focus-visible:outline-2 focus-visible:outline-white"

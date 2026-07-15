@@ -1,8 +1,16 @@
+import { ReactNode } from "react";
 import { requireRole } from "@/services/core/session";
 
-async function AdminDashboardLayout({ children }) {
+interface AdminDashboardLayoutProps {
+  children: ReactNode;
+}
+
+async function AdminDashboardLayout({
+  children,
+}: AdminDashboardLayoutProps) {
   await requireRole("admin");
-  return children;
+
+  return <>{children}</>;
 }
 
 export default AdminDashboardLayout;

@@ -193,7 +193,7 @@ export default function FAQContainer() {
             </div>
 
             {/* 4. FAQ Cards (Custom Tailored Accordion) */}
-            <div className="max-w-3xl mx-auto min-h-[350px]">
+            <div className="max-w-3xl mx-auto min-h-87.5">
                 {filteredFaqs.length > 0 ? (
                     <div className="space-y-4">
                         {filteredFaqs.map((faq) => {
@@ -217,7 +217,7 @@ export default function FAQContainer() {
                                     </button>
 
                                     {/* Smooth dynamic panel toggle */}
-                                    <div className={`transition-all duration-200 overflow-hidden ${isOpen ? "max-h-[500px] border-t border-slate-50" : "max-h-0"}`}>
+                                    <div className={`transition-all duration-200 overflow-hidden ${isOpen ? "max-h-125 border-t border-slate-50" : "max-h-0"}`}>
                                         <div className="p-5 pl-16 text-slate-600 text-sm md:text-base leading-relaxed">
                                             {faq.answer}
                                         </div>

@@ -77,6 +77,14 @@ function mapActivities(raw: ApiActivity[]): ActivityItemData[] {
 export default async function UserDashboardPage() {
   const data = await getUserDashboard();
 
+  if (!data) {
+    return (
+      <main className="min-h-screen w-full bg-[#F5F7F8] flex items-center justify-center">
+        <p className="text-red-500 font-bold">User Dashboard not found or data error!</p>
+      </main>
+    );
+  }
+
   return (
     <DashboardOverview
       title="Welcome back 👋"
