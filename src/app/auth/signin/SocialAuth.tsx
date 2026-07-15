@@ -5,7 +5,7 @@ export default function SocialAuth() {
   const handleGoogleLogin = async () => {
     // Better Auth Integration Point:
     // await authClient.signIn.social({ provider: "google" });
-    console.log("[SocialAuth] Google sign-in triggered for Better Auth");
+    // console.log("[SocialAuth] Google sign-in triggered for Better Auth");
   };
 
   return (

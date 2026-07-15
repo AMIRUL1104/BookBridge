@@ -5,3 +5,8 @@ export interface BooksResponse<T> {
   totalPages: number;
   currentPage: number;
 }
+
+export interface FeaturedPostsResponse<T> {
+  success: boolean;
+  data: T[];
+}

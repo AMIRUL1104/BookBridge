@@ -15,14 +15,13 @@ export function filterUsers(
   return users.filter((user) => {
     const matchesSearch =
       query.length === 0 ||
-      user.name.toLowerCase().includes(query) ||
+      user.fullName.toLowerCase().includes(query) ||
       user.email.toLowerCase().includes(query);
 
     const matchesRole = roleFilter === "all" || user.role === roleFilter;
 
-    const userStatus: StatusFilter = user.isBlocked ? "suspended" : "active";
-    const matchesStatus =
-      statusFilter === "all" || userStatus === statusFilter;
+    const userStatus: StatusFilter = "active";
+    const matchesStatus = statusFilter === "all" || userStatus === statusFilter;
 
     return matchesSearch && matchesRole && matchesStatus;
   });

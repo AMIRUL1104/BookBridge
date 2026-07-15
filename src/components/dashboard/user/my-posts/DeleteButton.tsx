@@ -24,7 +24,7 @@ export default function DeleteButton({
     setIsDeleting(true);
     try {
       const response = await deletePost(postId);
-      console.log(response)
+      // console.log(response)
 
       if (response?.success) {
         toast.success("Post deleted successfully.");
@@ -58,14 +58,14 @@ export default function DeleteButton({
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop */}
-          <div 
+          <div
             className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
-            onClick={() => !isDeleting && setIsOpen(false)} 
+            onClick={() => !isDeleting && setIsOpen(false)}
           />
 
           {/* Modal Container */}
           <div className="relative w-full max-w-[360px] transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all z-10 animate-in fade-in zoom-in-95 duration-200">
-            
+
             {/* Close Cross Button */}
             <button
               type="button"
@@ -104,7 +104,7 @@ export default function DeleteButton({
               >
                 Cancel
               </button>
-              
+
               <button
                 type="button"
                 disabled={isDeleting}

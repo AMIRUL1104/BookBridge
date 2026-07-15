@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 interface UserMenuProps {
   role: "user" | "admin" | null;
 }
-export default function UserMenu({role}: UserMenuProps) {
+export default function UserMenu({ role }: UserMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -26,20 +26,20 @@ export default function UserMenu({role}: UserMenuProps) {
   }, []);
 
   const handlePlaceholderAction = (actionName: string) => {
-    console.log(`[UserMenu] Temporary Triggered: ${actionName}`);
+    // console.log(`[UserMenu] Temporary Triggered: ${actionName}`);
   };
 
-  const  handleSignout = async () => {
- 
+  const handleSignout = async () => {
 
-await authClient.signOut({
-  fetchOptions: {
-    onSuccess: () => {
-      router.push("/auth/signin"); // redirect to login page
-       router.refresh(); // রিডাইরেক্টের পর  নতুন সেশন ডেটা লোড করার জন্য
-    },
-  },
-});
+
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/auth/signin"); // redirect to login page
+          router.refresh(); // রিডাইরেক্টের পর  নতুন সেশন ডেটা লোড করার জন্য
+        },
+      },
+    });
   }
 
   return (
@@ -71,14 +71,14 @@ await authClient.signOut({
             }}
             className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-[#F5F7F8] hover:text-[#35858E] transition-colors"
           >
-            Profile 
+            Profile
           </Link>
           <hr className="border-[#DDE5E7] my-1" />
           <button
             onClick={handleSignout}
             className="block w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors"
           >
-            Logout 
+            Logout
           </button>
         </div>
       )}

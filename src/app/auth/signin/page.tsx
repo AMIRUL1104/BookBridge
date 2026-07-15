@@ -2,14 +2,16 @@
 import { BookOpen } from "lucide-react";
 import Link from "next/link";
 import LoginForm from "./LoginForm";
+import { Suspense } from "react";
+import { Spinner } from "@heroui/react";
 
 export default function LoginPage() {
-  console.log("[LoginPage] Server Component wrapper initialized.");
+  // console.log("[LoginPage] Server Component wrapper initialized.");
 
   return (
     <main className="min-h-screen w-full flex items-center justify-center bg-[#F5F7F8] px-4 py-12">
-      <div className="w-full max-w-[440px] bg-white border border-[#DDE5E7] rounded-2xl p-6 sm:p-8 shadow-xs flex flex-col items-center">
-        
+      <div className="w-full max-w-110 bg-white border border-[#DDE5E7] rounded-2xl p-6 sm:p-8 shadow-xs flex flex-col items-center">
+
         {/* লোগো এবং আইকন এরিয়া */}
         <div className="mb-6 flex flex-col items-center gap-2">
           <div className="w-12 h-12 rounded-xl bg-[#35858E]/10 text-[#35858E] flex items-center justify-center shadow-xs">
@@ -30,8 +32,14 @@ export default function LoginPage() {
           </p>
         </div>
 
-        {/* ইন্টারঅ্যাক্টিভ ফর্ম কোর */}
-        <LoginForm />
+        {/* ✅ LoginForm-কে Suspense এর ভেতর রাখা হলো */}
+        <Suspense fallback={
+          <div className="flex justify-center py-6">
+            <Spinner className="w-6 h-6 animate-spin text-[#35858E]" />
+          </div>
+        }>
+          <LoginForm />
+        </Suspense>
 
         {/* রেজিস্ট্রেশন রিডাইরেক্ট লিঙ্ক */}
         <p className="text-sm text-gray-500 text-center mt-6">

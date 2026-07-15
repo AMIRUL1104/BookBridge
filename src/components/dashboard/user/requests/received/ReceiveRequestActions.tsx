@@ -36,7 +36,7 @@ function ReceiveRequestActions({ status, id }: ReceiveRequestActionsProps) {
 
     const handleCancelBookRequest = async () => {
         const res = await cancelBookRequest(id);
-        console.log(res)
+        // console.log(res)
         if (res.success) {
             toast.success("Request Cancelled!");
             router.refresh()

@@ -42,7 +42,7 @@ export function ProfileAvatar({
 
         try {
             const res = await uploadImageToImgBB(file);
-            console.log(res);
+            // console.log(res);
             if (res && res.url) {
                 onImageChange(file, res.url);
             }

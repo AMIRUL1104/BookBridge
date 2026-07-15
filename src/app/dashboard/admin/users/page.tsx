@@ -26,7 +26,7 @@ export default async function ManageUsersPage({
   const page = Math.max(1, parseInt(params.page ?? "1", 10));
 
   const response = await getAllUsers({ search, role, status, sort, page, limit: 10 });
-  console.log(response)
+  // console.log(response)
 
   const pageHeader = (
     <div>

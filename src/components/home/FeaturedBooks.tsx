@@ -7,18 +7,19 @@ import BookCard from "../shared/BookCard";
 
 export default async function FeaturedBooks() {
 
-  const postData = await getFeaturedPosts();
+  const postData = await getFeaturedPosts<BookItem>();
+
   if (!postData) {
     return (
       <main className="min-h-screen w-full bg-[#F5F7F8] flex items-center justify-center">
-        <p className="text-red-500 font-bold">Featured Books not found or data error!</p>
+        <p className="text-red-500 font-bold">
+          Featured Books not found or data error!
+        </p>
       </main>
     );
   }
-  console.log(postData)
-  // console.log("Fetched posts data:", postData);
-  const featuredBooks: BookItem[] = postData?.data || [] as BookItem[];
 
+  const featuredBooks = postData.data;
   return (
     <section className="py-16 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">

@@ -1,7 +1,10 @@
 import { GetPostsParams } from "@/interface/post related/getPostsParams";
 import { protectedFetch, serverFetch } from "../core/serverFetch";
 import { PostResponse } from "@/interface/post related/postResponse";
-import { BooksResponse } from "@/interface/post related/booksResponse";
+import {
+  BooksResponse,
+  FeaturedPostsResponse,
+} from "@/interface/post related/booksResponse";
 import { CheckBookRequestResponse } from "@/interface/bookRequest/checkRequest";
 import { BookRequestResponse } from "@/interface/bookRequest/bookRequest";
 import { UserProfile } from "@/interface/user/userProfile";
@@ -90,11 +93,9 @@ export const getReceivedRequests = async (
 // getFeaturedPosts
 export const getFeaturedPosts = async <
   T,
->(): Promise<BooksResponse<T> | null> => {
-  const result = await serverFetch<BooksResponse<T>>(`/api/posts/featured`);
-  return result;
+>(): Promise<FeaturedPostsResponse<T> | null> => {
+  return await serverFetch<FeaturedPostsResponse<T>>("/api/posts/featured");
 };
-
 // userProfile actions
 
 export const getUserProfile = async (): Promise<UserProfile | null> => {

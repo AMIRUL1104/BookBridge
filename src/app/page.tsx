@@ -2,7 +2,7 @@
 import HomePage from "@/components/home/HomePage";
 
 export default function Home() {
-  console.log("[Root Home] Rendering main layout with full responsive width support.");
+  // console.log("[Root Home] Rendering main layout with full responsive width support.");
 
   return (
 

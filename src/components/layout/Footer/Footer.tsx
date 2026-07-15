@@ -4,7 +4,7 @@ import FooterLinks from "./FooterLinks";
 import FooterContact from "./FooterContact";
 
 export default function Footer() {
-  console.log("[Footer] Rendering Server Component Layout");
+  // console.log("[Footer] Rendering Server Component Layout");
 
   // ডাটা ম্যাপস
   const quickLinks = [
