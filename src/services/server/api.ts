@@ -5,6 +5,7 @@ import { BooksResponse } from "@/interface/post related/booksResponse";
 import { CheckBookRequestResponse } from "@/interface/bookRequest/checkRequest";
 import { BookRequestResponse } from "@/interface/bookRequest/bookRequest";
 import { UserProfile } from "@/interface/user/userProfile";
+import { UserDashboardResponse } from "@/interface/dashboard/dashboard";
 
 export const getPosts = async <T>({
   search = "",
@@ -43,6 +44,11 @@ export const getPosts = async <T>({
 
   return result;
 };
+
+export const getUserDashboard =
+  async (): Promise<UserDashboardResponse | null> => {
+    return protectedFetch<UserDashboardResponse>("/api/dashboard/user");
+  };
 
 export const getPostById = async (id: string): Promise<PostResponse | null> => {
   return serverFetch<PostResponse>(`/api/posts/${id}`);

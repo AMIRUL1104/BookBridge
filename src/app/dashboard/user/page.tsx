@@ -1,0 +1,89 @@
+// app/dashboard/user/page.tsx
+
+import {
+  BookOpen,
+  Inbox,
+  Handshake,
+  ClipboardCheck,
+  PlusCircle,
+  UserCog,
+} from "lucide-react";
+
+
+import DashboardOverview from "@/components/dashboard/DashboardOverview";
+
+import { ActivityItemData, ApiActivity, QuickActionData, StatCardData, UserDashboardResponse } from "@/interface/dashboard/dashboard";
+import { formatRelativeTime } from "@/lib/formatRelativeTime";
+import { getUserDashboard } from "@/services/server/api";
+
+// ─── Static quick actions ─────────────────────────────────────────────────────
+
+const userQuickActions: QuickActionData[] = [
+  { label: "Add New Post", href: "/dashboard/user/posts", icon: PlusCircle },
+  { label: "View Requests", href: "/dashboard/user/requests", icon: Inbox },
+  { label: "Browse Books", href: "/browse", icon: BookOpen },
+  { label: "Edit Profile", href: "/dashboard/user/profile", icon: UserCog },
+];
+
+// ─── Mappers ──────────────────────────────────────────────────────────────────
+
+function mapUserStats(data: UserDashboardResponse): StatCardData[] {
+  return [
+    {
+      label: "Active Posts",
+      value: data.activePosts.toLocaleString(),
+      icon: BookOpen,
+      trend: "up",
+    },
+    {
+      label: "Pending Requests",
+      value: data.pendingRequests.toLocaleString(),
+      icon: Inbox,
+      trend: "up",
+    },
+    {
+      label: "Books Sold",
+      value: data.booksSold.toLocaleString(),
+      icon: Handshake,
+      trend: "up",
+    },
+    {
+      label: "Books Donated",
+      value: data.booksDonated.toLocaleString(),
+      icon: ClipboardCheck,
+      trend: "neutral",
+    },
+  ];
+}
+
+const activityIconMap: Record<ApiActivity["type"], React.ComponentType<{ className?: string }>> = {
+  user_registered: BookOpen, // won't appear in user activities, safe fallback
+  post_created: BookOpen,
+  request_created: Inbox,
+};
+
+function mapActivities(raw: ApiActivity[]): ActivityItemData[] {
+  return raw.map((a) => ({
+    id: a.id,
+    title: a.title,
+    description: a.description,
+    timestamp: formatRelativeTime(a.createdAt),
+    icon: activityIconMap[a.type] ?? BookOpen,
+  }));
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
+
+export default async function UserDashboardPage() {
+  const data = await getUserDashboard();
+
+  return (
+    <DashboardOverview
+      title="Welcome back 👋"
+      subtitle="Here's what's happening with your books today."
+      stats={mapUserStats(data)}
+      activities={mapActivities(data?.recentActivities)}
+      actions={userQuickActions}
+    />
+  );
+}

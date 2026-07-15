@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import { Camera } from "lucide-react";
+import Image from "next/image";
 
 interface ProfileAvatarProps {
     avatarUrl: string | null;
@@ -32,6 +33,7 @@ export function ProfileAvatar({
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const displayUrl = previewUrl ?? avatarUrl;
+    // console.log(displayUrl)
 
     function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
         const file = e.target.files?.[0];
@@ -45,7 +47,10 @@ export function ProfileAvatar({
             {/* Avatar circle */}
             <div className="w-28 h-28 rounded-full ring-4 ring-white shadow-lg overflow-hidden bg-[#7DA78C] flex items-center justify-center">
                 {displayUrl ? (
-                    <img
+                    <Image
+                        width={100}
+                        height={100}
+
                         src={displayUrl}
                         alt={fullName}
                         className="w-full h-full object-cover"

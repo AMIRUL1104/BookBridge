@@ -1,6 +1,7 @@
 import { protectedFetch } from "@/services/core/serverFetch";
 import type { GetUsersResponse } from "@/interface/dashboard/manageUsers";
 import type { BookRequestResponse } from "@/interface/bookRequest/bookRequest";
+import { AdminDashboardResponse } from "@/interface/dashboard/dashboard";
 
 export type SortOption = "newest" | "oldest";
 
@@ -50,4 +51,9 @@ export const getAllUsers = async ({
 export const getAllBookRequests =
   async (): Promise<BookRequestResponse | null> => {
     return protectedFetch<BookRequestResponse>("/api/admin/book-requests");
+  };
+
+export const getAdminDashboard =
+  async (): Promise<AdminDashboardResponse | null> => {
+    return protectedFetch<AdminDashboardResponse>("/api/dashboard/admin");
   };
