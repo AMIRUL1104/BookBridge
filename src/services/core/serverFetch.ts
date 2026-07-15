@@ -1,6 +1,6 @@
 "use server";
 import { getUserToken } from "./session";
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export const authHeader = async (): Promise<HeadersInit> => {
   const token = await getUserToken();

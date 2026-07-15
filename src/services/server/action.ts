@@ -3,7 +3,7 @@ import { BookRequest } from "@/interface/bookRequest/checkRequest";
 import { serverMutation } from "../core/server";
 import { authHeader } from "../core/serverFetch";
 import { UpdateProfilePayload } from "@/interface/user/userProfile";
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
+const baseUrl = process.env.NEXT_PUBLIC_API_URL!;
 
 export const addNewPost = async (data: BookItem) => {
   return serverMutation<BookItem>("/api/posts", data);
