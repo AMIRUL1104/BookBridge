@@ -37,7 +37,7 @@ export default function KnowledgeBasePlaceholderPage() {
 
                 {/* 2. Action Trigger (Fallback Routing) */}
                 <Link
-                    href="/dashboard/user"
+                    href="/dashboard/admin"
                     className="inline-flex items-center justify-center gap-2 w-full h-11 bg-[#35858E] hover:bg-[#2b6d75] text-white font-semibold rounded-xl text-sm transition-colors shadow-sm shadow-[#35858e30] focus:outline-none focus:ring-2 focus:ring-[#35858E] focus:ring-offset-2"
                 >
                     <ArrowLeft className="w-4 h-4" />

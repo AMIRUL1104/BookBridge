@@ -3,6 +3,7 @@
 import React, { useRef } from "react";
 import { Camera } from "lucide-react";
 import Image from "next/image";
+import { uploadImageToImgBB } from "@/components/add-post/imgbb";
 
 interface ProfileAvatarProps {
     avatarUrl: string | null;
@@ -32,28 +33,38 @@ export function ProfileAvatar({
 }: ProfileAvatarProps) {
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const displayUrl = previewUrl ?? avatarUrl;
-    // console.log(displayUrl)
-
-    function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    // displayUrl নতুন previewUrl অথবা আগের avatarUrl ব্যবহার করবে
+    const displayUrl = previewUrl || avatarUrl;
+    // console.log(displayUrl);
+    async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
         const file = e.target.files?.[0];
         if (!file) return;
-        const objectUrl = URL.createObjectURL(file);
-        onImageChange(file, objectUrl);
-    }
 
+        try {
+            const res = await uploadImageToImgBB(file);
+            console.log(res);
+            if (res && res.url) {
+                onImageChange(file, res.url);
+            }
+        } catch (error) {
+            console.error("Image upload failed:", error);
+        }
+    }
+    const imgbbLoader = ({ src }: { src: string }) => {
+        return src;
+    };
     return (
         <div className="relative inline-block">
             {/* Avatar circle */}
-            <div className="w-28 h-28 rounded-full ring-4 ring-white shadow-lg overflow-hidden bg-[#7DA78C] flex items-center justify-center">
+            <div className="w-28 h-28 rounded-full ring-4 ring-white shadow-lg overflow-hidden bg-[#7DA78C] flex items-center justify-center relative"> {/* 'relative' class যোগ করা হয়েছে যেহেতু fill ব্যবহার করছেন */}
                 {displayUrl ? (
                     <Image
-                        width={100}
-                        height={100}
-
-                        src={displayUrl}
+                        loader={imgbbLoader} // <--- এই লাইনটি যোগ করুন
+                        fill
+                        src={displayUrl as string}
                         alt={fullName}
                         className="w-full h-full object-cover"
+                        sizes="112px"
                     />
                 ) : (
                     <span className="text-white text-3xl font-bold select-none">

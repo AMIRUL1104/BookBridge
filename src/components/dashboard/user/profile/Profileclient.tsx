@@ -72,7 +72,7 @@ export function ProfileClient({ initialUser }: ProfileClientProps) {
         };
 
         const res = await updateUserProfile(payload);
-        console.log(res);
+        // console.log(res);
         if (res.success) {
             toast.success("Profile updated successfully!");
             // Optimistically update local state

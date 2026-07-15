@@ -87,6 +87,14 @@ export const getReceivedRequests = async (
   return result;
 };
 
+// getFeaturedPosts
+export const getFeaturedPosts = async <
+  T,
+>(): Promise<BooksResponse<T> | null> => {
+  const result = await serverFetch<BooksResponse<T>>(`/api/posts/featured`);
+  return result;
+};
+
 // userProfile actions
 
 export const getUserProfile = async (): Promise<UserProfile | null> => {

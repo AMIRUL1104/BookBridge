@@ -32,7 +32,7 @@ const adminQuickActions: QuickActionData[] = [
     href: "/dashboard/admin/knowledge-base",
     icon: Library,
   },
-  { label: "Edit Profile", href: "/dashboard/admin/profile", icon: UserCog },
+  { label: "Profile", href: "/profile", icon: UserCog },
 ];
 
 // ─── Mappers ──────────────────────────────────────────────────────────────────

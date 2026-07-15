@@ -8,7 +8,7 @@ export const userNavItems: NavItem[] = [
     href: "/dashboard/user/requests",
     icon: "ClipboardList",
   },
-  { label: "Profile", href: "/dashboard/user/profile", icon: "User" },
+  { label: "Profile", href: "/profile", icon: "User" },
 ];
 
 export const adminNavItems: NavItem[] = [
@@ -20,5 +20,5 @@ export const adminNavItems: NavItem[] = [
     href: "/dashboard/admin/knowledge-base",
     icon: "Library",
   },
-  { label: "Profile", href: "/dashboard/admin/profile", icon: "User" },
+  { label: "Profile", href: "/profile", icon: "User" },
 ];

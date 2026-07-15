@@ -1,15 +1,15 @@
 import { ProfileClient } from "@/components/dashboard/user/profile/Profileclient";
 import { UserProfile, UserProfileResponse } from "@/interface/user/userProfile";
 import { getUserProfile } from "@/services/server/api";
-
-
+import { redirect } from "next/navigation";
 
 export default async function ProfilePage() {
 
     const profileResponse = await getUserProfile() as UserProfileResponse | null;
 
     if (!profileResponse) {
-        return;
+        redirect("/auth/signin")
+
     }
 
     const user: UserProfile = profileResponse.data;
