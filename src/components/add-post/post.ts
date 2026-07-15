@@ -54,10 +54,14 @@ export interface AddNewPostResult {
 }
 
 export const BOOK_CATEGORIES = [
-  "SSC",
-  "HSC",
-  "Admission",
+  "Science",
+  "Commerce",
+  "Arts",
   "University",
+  "Admission",
+  "Buisness",
+  "Engineering",
+  "Medical",
   "Others",
 ] as const;
 
