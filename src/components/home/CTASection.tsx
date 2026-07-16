@@ -2,7 +2,8 @@
 import Link from "next/link";
 import { PlusCircle } from "lucide-react";
 
-export default function CTASection() {
+
+export default async function CTASection() {
   return (
     <section className="bg-[#35858E] py-16 lg:py-20 w-full text-white text-center relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-6 relative z-10 flex flex-col items-center gap-6">

@@ -65,7 +65,7 @@ export default function LoginForm() {
       // সফলভাবে রেজিস্ট্রেশন সম্পন্ন হলে
       if (data?.user) {
 
-        console.log("[RegisterForm] User registered successfully:", data.user);
+        // console.log("[RegisterForm] User registered successfully:", data.user);
         toast.success(" Welcome to BookBridge.");
 
         // স্টেট ক্লিয়ার করে হোম পেজে রিডাইরেক্ট

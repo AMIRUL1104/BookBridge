@@ -44,27 +44,28 @@ export default function Hero() {
     },
   };
 
+
   return (
     <section className="relative bg-[#F5F7F8] py-16 lg:py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        
+
         {/* লেফট সাইড কন্টেন্ট (Framer Motion Wrapper) */}
-        <motion.div 
+        <motion.div
           className="flex flex-col gap-6 text-center lg:text-left"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* সাব-হেডিং ব্যাজ */}
-          <motion.span 
+          <motion.span
             variants={itemVariants}
             className="inline-flex self-center lg:self-start items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#35858E]/10 text-[#35858E]"
           >
-           {` 📚 Bangladesh's Student Book Hub`}
+            {` 📚 Bangladesh's Student Book Hub`}
           </motion.span>
 
           {/* মেইন হেডলাইন */}
-          <motion.h1 
+          <motion.h1
             variants={itemVariants}
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight"
           >
@@ -73,15 +74,15 @@ export default function Hero() {
           </motion.h1>
 
           {/* শর্ট ডেসক্রিপশন */}
-          <motion.p 
+          <motion.p
             variants={itemVariants}
             className="text-lg text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed"
           >
             {`Connect with fellow students across Bangladesh. Sell your used academic books or donate them to someone in need. Let's make education accessible for everyone.
 `}          </motion.p>
-          
+
           {/* CTA বাটনস গ্রুপ */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mt-2"
           >
@@ -103,14 +104,14 @@ export default function Hero() {
         </motion.div>
 
         {/* রাইট সাইড ইলাস্ট্রেশন (প্রফেশনাল ফ্লোটিং ইফেক্ট সহ) */}
-        <motion.div 
+        <motion.div
           className="relative flex justify-center items-center"
           variants={imageVariants}
           initial="hidden"
           animate="visible"
         >
           {/* এই মোশন ডিভটি কন্টিনিউয়াসলি ওপরে-নিচে ভাসবে (Infinite Float Effect) */}
-          <motion.div 
+          <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={{
               duration: 4,

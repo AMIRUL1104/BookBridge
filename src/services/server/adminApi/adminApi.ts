@@ -2,6 +2,9 @@ import { protectedFetch } from "@/services/core/serverFetch";
 import type { GetUsersResponse } from "@/interface/dashboard/manageUsers";
 import type { BookRequestResponse } from "@/interface/bookRequest/bookRequest";
 import { AdminDashboardResponse } from "@/interface/dashboard/dashboard";
+import { FeaturedPostsResponse } from "@/interface/post related/booksResponse";
+import { BookItem } from "@/components/add-post/post";
+import { serverMutation } from "@/services/core/server";
 
 export type SortOption = "newest" | "oldest";
 
@@ -56,4 +59,9 @@ export const getAllBookRequests =
 export const getAdminDashboard =
   async (): Promise<AdminDashboardResponse | null> => {
     return protectedFetch<AdminDashboardResponse>("/api/dashboard/admin");
+  };
+
+export const getAllPosts =
+  async (): Promise<FeaturedPostsResponse<BookItem> | null> => {
+    return protectedFetch<FeaturedPostsResponse<BookItem>>("/api/posts/admin");
   };
