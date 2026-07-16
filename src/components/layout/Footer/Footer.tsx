@@ -11,7 +11,6 @@ export default function Footer() {
     { label: "Home", href: "/" },
     { label: "Browse Books", href: "/books" },
     { label: "Add Book", href: "/books/add" },
-    { label: "Dashboard", href: "/dashboard" },
   ];
 
   const resourcesLinks = [

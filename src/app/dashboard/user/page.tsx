@@ -19,10 +19,10 @@ import { getUserDashboard } from "@/services/server/api";
 // ─── Static quick actions ─────────────────────────────────────────────────────
 
 const userQuickActions: QuickActionData[] = [
-  { label: "Add New Post", href: "/dashboard/user/posts", icon: PlusCircle },
+  { label: "My Posts", href: "/dashboard/user/posts", icon: PlusCircle },
   { label: "View Requests", href: "/dashboard/user/requests", icon: Inbox },
   { label: "Browse Books", href: "/browse", icon: BookOpen },
-  { label: "Edit Profile", href: "/dashboard/user/profile", icon: UserCog },
+  { label: "Profile", href: "/profile", icon: UserCog },
 ];
 
 // ─── Mappers ──────────────────────────────────────────────────────────────────
