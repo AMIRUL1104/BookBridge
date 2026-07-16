@@ -56,7 +56,7 @@ export default function LoginForm() {
 
       // যদি Better Auth কোনো এরর রিটার্ন করে (যেমন: Email already exists)
       if (error) {
-        // console.error("[RegisterForm] Better Auth error:", error.message);
+        console.error("[RegisterForm] Better Auth error:", error.message);
         toast.error(error.message || "Something went wrong during sign in.");
         setIsLoading(false);
         return; // এখানেই ফাংশন থামিয়ে দেওয়া হলো
@@ -65,7 +65,7 @@ export default function LoginForm() {
       // সফলভাবে রেজিস্ট্রেশন সম্পন্ন হলে
       if (data?.user) {
 
-        // console.log("[RegisterForm] User registered successfully:", data.user);
+        console.log("[RegisterForm] User registered successfully:", data.user);
         toast.success(" Welcome to BookBridge.");
 
         // স্টেট ক্লিয়ার করে হোম পেজে রিডাইরেক্ট

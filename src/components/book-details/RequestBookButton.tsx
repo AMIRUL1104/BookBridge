@@ -42,7 +42,11 @@ export default function RequestBookButton({
 }: RequestBookButtonProps) {
   const [status, setStatus] = useState<ButtonStatus>("checking");
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  // console.log({
+  //   requesterId,
+  //   sellerId,
+  //   postId,
+  // });
   useEffect(() => {
     let isMounted = true;
 

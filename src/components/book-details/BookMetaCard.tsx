@@ -3,17 +3,15 @@ import { Card } from "@heroui/react";
 import RequestBookButton from "./RequestBookButton";
 import { PostDetailData } from "@/app/books/[id]/page";
 import { getUserProfile } from "@/services/server/api";
-
+import { UserProfileResponse } from "@/interface/user/userProfile";
 interface BookMetaCardProps {
   post: PostDetailData;
 }
 
 export default async function BookMetaCard({ post }: BookMetaCardProps) {
-  // const user = await getUserSession();
-  const user = await getUserProfile();
-  // if (!user) {
-  // return 
-  // }
+  const response = (await getUserProfile()) as UserProfileResponse | null;
+  const user = response?.data;
+
 
   // বান্ডেলের সব বইয়ের দাম একসাথে যোগ করা হচ্ছে (Total Sum)
   const totalBundlePrice = post.books.reduce((acc, book) => acc + book.price, 0);
