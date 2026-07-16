@@ -1,36 +1,243 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📚 BookBridge
 
-## Getting Started
+BookBridge is a community-driven platform that helps people buy, sell, and donate used academic books. The platform connects students with affordable learning resources while reducing book waste. Users can easily browse available books, create listings, send book requests, and manage their activities through a personalized dashboard.
 
-First, run the development server:
+## 🌐 Live Website
+
+https://bookbridgebd.vercel.app
+
+---
+
+## 🚀 Features
+
+### Authentication
+
+- Secure authentication using Better Auth
+- User registration and login
+- Protected routes
+- Role-based access (User & Admin)
+
+### Book Management
+
+- Add new book posts
+- Edit own book posts
+- Delete own book posts
+- Upload book images with ImgBB
+- View detailed book information
+
+### Browse Books
+
+- Browse all available books
+- Search books
+- Filter by category
+- Filter by condition
+- Filter by listing type (Sell/Donate)
+- Sort books
+
+### Book Request System
+
+- Send book requests
+- Prevent duplicate requests
+- Seller can accept requests
+- Accepted book automatically becomes sold
+- Remaining pending requests become cancelled
+- Restore availability if accepted request is cancelled
+
+### User Dashboard
+
+- Dashboard overview
+- Manage profile
+- Manage own posts
+- View incoming requests
+- View sent requests
+
+### Admin Dashboard
+
+- Dashboard overview
+- Manage users
+- Manage book posts
+- Soft delete inappropriate posts
+
+### Responsive Design
+
+- Mobile-friendly interface
+- Tablet support
+- Desktop optimized
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- Next.js 16 (App Router)
+- TypeScript
+- Tailwind CSS
+- HeroUI v3
+- React Hook Form
+- Zod
+- React Toastify
+
+### Backend
+
+- Express.js
+- MongoDB
+- Better Auth
+
+### Image Hosting
+
+- ImgBB
+
+### Deployment
+
+- Vercel
+- Render
+
+---
+
+## 📂 Project Structure
+
+```text
+app/
+components/
+services/
+types/
+hooks/
+lib/
+utils/
+public/
+```
+
+---
+
+## ⚙️ Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/AMIRUL1104/BookBridge.git
+```
+
+### Navigate to the project
+
+```bash
+cd BookBridge
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Create a `.env.local` file
+
+```env
+NEXT_PUBLIC_BASE_URL=
+NEXT_PUBLIC_API_URL=
+BETTER_AUTH_URL=
+CLIENT_URL=
+```
+
+### Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ▶️ Run Production
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🔑 Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```env
+NEXT_PUBLIC_BASE_URL=
+NEXT_PUBLIC_API_URL=
+BETTER_AUTH_URL=
+CLIENT_URL=
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 👤 Demo Credentials
+
+### User
+
+```
+Email:
+Password:
+```
+
+### Admin
+
+```
+Email:
+Password:
+```
+
+---
+
+## 📸 Screenshots
+
+You can add screenshots of:
+
+- Home Page
+- Browse Books
+- Book Details
+- User Dashboard
+- Admin Dashboard
+
+---
+
+## 🔗 Repositories
+
+### Frontend
+
+https://github.com/AMIRUL1104/BookBridge
+
+### Backend
+
+https://github.com/AMIRUL1104/BookBridge-Server
+
+---
+
+## 📈 Future Improvements
+
+- Real-time notifications
+- Chat system
+- Wishlist
+- Payment integration
+- Delivery tracking
+- Ratings & Reviews
+- Email notifications
+
+---
+
+## 👨‍💻 Author
+
+**Amirul Islam**
+
+- Portfolio: https://amirul-islam.vercel.app
+- GitHub: https://github.com/AMIRUL1104
+- LinkedIn: https://linkedin.com/in/amirulislam1104
+
+---
+
+## 📄 License
+
+This project is created for educational purposes.
